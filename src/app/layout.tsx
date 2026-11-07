@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import { SITE_URL } from "@/lib/site"
 import { Header } from "@/components/Header"
 import { Scoreboard } from "@/components/Scoreboard"
 import { Ticker } from "@/components/Ticker"
@@ -11,9 +12,8 @@ export const metadata: Metadata = {
   title: { default: "SPORTY PH — Sports Trending Short Stories", template: "%s — SPORTY PH" },
   description:
     "Fast Philippine sports news: NBA, PBA, Gilas, UAAP, NCAA, PVL and live decimal odds from PAGCOR-licensed sportsbooks. 90-second short stories for your commute.",
-  metadataBase: new URL("https://sportyph.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   openGraph: { siteName: "SPORTY PH", locale: "en_PH", type: "website" },
-  icons: { icon: "/favicon.ico" },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
