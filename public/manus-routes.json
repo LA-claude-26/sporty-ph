@@ -1,0 +1,10 @@
+{
+  "routes": [
+    { "path": "/", "title": "Home" },
+    { "path": "/article/ai-predictions", "title": "NBA AI Predictions" },
+    { "path": "/article/suns-vs-magic", "title": "Suns vs Magic Preview" },
+    { "path": "/league/pba", "title": "PBA Hub" },
+    { "path": "/odds", "title": "Live Odds" },
+    { "path": "/newsletter", "title": "Newsletter" }
+  ]
+}
