@@ -146,7 +146,7 @@ export function Sidewinder({ variant = "full" }: { variant?: "full" | "article" 
       </div>
 
       <div className="widget sub-widget">
-        <div className="sub-title">CLUTCH DAILY</div>
+        <div className="sub-title">SPORTY DAILY</div>
         <div className="sub-sub">Top 5 stories + betting edges every morning 7AM PHT. Viber & email. Free.</div>
         <form className="sub-form" onSubmit={subscribed}>
           <input className="sub-input" placeholder="you@email.com" type="email" required />

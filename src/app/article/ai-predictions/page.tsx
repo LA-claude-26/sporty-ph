@@ -31,7 +31,7 @@ export default function AiPredictionsPage() {
             <div className="article-badge">NBA · AI PREDICTIONS</div>
             <h1 className="article-title">NBA AI Predictions Tonight: ATS Picks &amp; Score Projections for Every Game</h1>
             <div className="article-meta">
-              <span>By <strong>CLUTCH Staff</strong> · <strong>Odds Desk</strong></span>
+              <span>By <strong>SPORTY Staff</strong> · <strong>Odds Desk</strong></span>
               <span>·</span><span>Updated: Nov 6, 2026, 09:18 PHT</span>
               <span>·</span><span>Lines: OKBet PH (decimal)</span>
               <span>·</span><span>3 min read</span>
@@ -167,7 +167,7 @@ export default function AiPredictionsPage() {
             <div className="sub-form" style={{ margin: "24px 0", background: "var(--bg-card2)", border: "1px solid var(--mint)", borderRadius: 10, padding: 14, alignItems: "center" }}>
               <div style={{ flex: 1 }}>
                 <strong style={{ color: "var(--text)" }}>Get tonight's best picks in your inbox every morning.</strong>
-                <div style={{ fontSize: 11, color: "var(--text-muted)" }}>CLUTCH DAILY · 7AM PHT · NBA + PBA betting edges · free</div>
+                <div style={{ fontSize: 11, color: "var(--text-muted)" }}>SPORTY DAILY · 7AM PHT · NBA + PBA betting edges · free</div>
               </div>
               <Link className="btn btn-accent" href="/newsletter">SUBSCRIBE FREE</Link>
             </div>

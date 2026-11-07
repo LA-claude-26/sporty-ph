@@ -75,7 +75,7 @@ export default function Home() {
           <Link className="var-card" href="/newsletter">
             <div className="var-num">05 · SUBSCRIBER FUNNEL</div>
             <div className="var-t">Newsletter Landing Page</div>
-            <div className="var-d">CLUTCH DAILY free vs VIP tiers, perks, Viber community access, and Beehiiv-benchmark conversion math.</div>
+            <div className="var-d">SPORTY DAILY free vs VIP tiers, perks, Viber community access, and Beehiiv-benchmark conversion math.</div>
           </Link>
           <Link className="var-card" href="/article/ai-predictions#slate">
             <div className="var-num">06 · AFFILIATE ENGINE</div>

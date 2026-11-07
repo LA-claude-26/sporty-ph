@@ -61,7 +61,7 @@ export default function PbaHubPage() {
             </div>
 
             <div className="sub-form" style={{ margin: "26px 0", background: "var(--bg-card2)", border: "1px solid var(--mint)", borderRadius: 10, padding: 14, alignItems: "center" }}>
-              <div style={{ flex: 1 }}><strong style={{ color: "var(--text)" }}>Never miss a PBA line movement.</strong><div style={{ fontSize: 11, color: "var(--text-muted)" }}>CLUTCH DAILY — every morning 7AM PHT. Free forever.</div></div>
+              <div style={{ flex: 1 }}><strong style={{ color: "var(--text)" }}>Never miss a PBA line movement.</strong><div style={{ fontSize: 11, color: "var(--text-muted)" }}>SPORTY DAILY — every morning 7AM PHT. Free forever.</div></div>
               <Link className="btn btn-accent" href="/newsletter">SUBSCRIBE FREE</Link>
             </div>
 

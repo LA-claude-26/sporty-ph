@@ -1,4 +1,4 @@
-# CLUTCH PH
+# Sporty
 
 Philippines-focused sports trending news website — NBA, PBA, Gilas, UAAP, NCAA, PVL and live decimal odds from PAGCOR-licensed sportsbooks.
 
@@ -20,8 +20,8 @@ npm run start    # production server
 
 ## Deploy to Vercel
 
-1. Push this repo to GitHub (or use the one already created: `github.com/LeadAdvisorsdotcom/clutch-ph`).
-2. Go to **vercel.com/new** → import `LeadAdvisorsdotcom/clutch-ph`.
+1. Push this repo to GitHub (or use the one already created: `github.com/LeadAdvisorsdotcom/sporty`).
+2. Go to **vercel.com/new** → import `LeadAdvisorsdotcom/sporty`.
 3. Framework preset: **Next.js** (auto-detected) → click **Deploy**.
 4. Every push to `main` auto-deploys.
 
@@ -37,7 +37,7 @@ src/
 │   │   └── suns-vs-magic/        # Variation 2: Game betting preview (~250 words)
 │   ├── league/pba/               # PBA league hub (SEO pillar)
 │   ├── odds/                     # Live decimal odds board
-│   ├── newsletter/               # CLUTCH DAILY funnel landing page
+│   ├── newsletter/               # Sporty DAILY funnel landing page
 │   ├── icon.svg                  # Brand favicon
 │   ├── robots.ts & sitemap.ts    # SEO
 │   └── globals.css               # Full mint design system

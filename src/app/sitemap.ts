@@ -3,7 +3,7 @@ import { MetadataRoute } from "next"
 export const dynamic = "force-static"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://clutchph.vercel.app"
+  const base = "https://sportyph.vercel.app"
   const routes = ["", "/article/ai-predictions", "/article/suns-vs-magic", "/league/pba", "/odds", "/newsletter"]
   return routes.map((r) => ({
     url: `${base}${r}`,

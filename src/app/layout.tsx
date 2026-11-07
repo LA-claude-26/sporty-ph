@@ -7,12 +7,12 @@ import { BottomNav } from "@/components/BottomNav"
 import { LeaderboardAd } from "@/components/Ads"
 
 export const metadata: Metadata = {
-  title: { default: "CLUTCH PH — Sports Trending Short Stories", template: "%s — CLUTCH PH" },
+  title: { default: "SPORTY PH — Sports Trending Short Stories", template: "%s — SPORTY PH" },
   description:
     "Fast Philippine sports news: NBA, PBA, Gilas, UAAP, NCAA, PVL and live decimal odds from PAGCOR-licensed sportsbooks. 90-second short stories for your commute.",
-  metadataBase: new URL("https://clutchph.vercel.app"),
+  metadataBase: new URL("https://sportyph.vercel.app"),
   openGraph: {
-    siteName: "CLUTCH PH",
+    siteName: "SPORTY PH",
     locale: "en_PH",
     type: "website",
   },

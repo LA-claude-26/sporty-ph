@@ -67,7 +67,7 @@ export default function OddsPage() {
             </div>
 
             <div className="sub-form" style={{ margin: "26px 0", background: "var(--bg-card2)", border: "1px solid var(--mint)", borderRadius: 10, padding: 14, alignItems: "center" }}>
-              <div style={{ flex: 1 }}><strong style={{ color: "var(--text)" }}>Get daily line-movement alerts at 7AM PHT.</strong><div style={{ fontSize: 11, color: "var(--text-muted)" }}>CLUTCH DAILY — free, decimal odds, Philippine leagues included.</div></div>
+              <div style={{ flex: 1 }}><strong style={{ color: "var(--text)" }}>Get daily line-movement alerts at 7AM PHT.</strong><div style={{ fontSize: 11, color: "var(--text-muted)" }}>SPORTY DAILY — free, decimal odds, Philippine leagues included.</div></div>
               <Link className="btn btn-accent" href="/newsletter">SUBSCRIBE FREE</Link>
             </div>
 

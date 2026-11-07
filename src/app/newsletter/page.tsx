@@ -64,7 +64,7 @@ export default function NewsletterPage() {
       <div className="pricing-grid">
         <div className="pricing-card featured">
           <span className="hub-tag">MOST POPULAR</span>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 24, margin: "8px 0 2px" }}>CLUTCH DAILY</h3>
+          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 24, margin: "8px 0 2px" }}>SPORTY DAILY</h3>
           <p style={{ fontSize: 13, color: "var(--text-dim)" }}>The morning email and Viber broadcast</p>
           <div className="price">₱0 <span>forever</span></div>
           <ul className="check-list">
@@ -79,7 +79,7 @@ export default function NewsletterPage() {
         </div>
         <div className="pricing-card">
           <h3 style={{ fontFamily: "var(--font-display)", fontSize: 24, margin: "8px 0 2px" }}>
-            CLUTCH VIP <span style={{ fontSize: 12, color: "var(--orange)" }}>COMING SOON</span>
+            SPORTY VIP <span style={{ fontSize: 12, color: "var(--orange)" }}>COMING SOON</span>
           </h3>
           <p style={{ fontSize: 13, color: "var(--text-dim)" }}>For serious bettors</p>
           <div className="price">₱499 <span>/month</span></div>

@@ -5,7 +5,7 @@ export function Footer() {
     <footer>
       <div className="foot-inner">
         <div>
-          <strong>CLUTCH PH</strong> — Short-story sports media for the Philippines. NBA · PBA · Gilas · UAAP · NCAA · PVL · Betting.
+          <strong>SPORTY PH</strong> — Short-story sports media for the Philippines. NBA · PBA · Gilas · UAAP · NCAA · PVL · Betting.
         </div>
         <div className="foot-links">
           <Link href="/">Home</Link>

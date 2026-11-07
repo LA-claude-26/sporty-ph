@@ -31,7 +31,7 @@ export default function SunsVsMagicPage() {
             <div className="article-badge">NBA · BETTING PREVIEW</div>
             <h1 className="article-title">NBA: Phoenix Suns vs. Orlando Magic</h1>
             <div className="article-meta">
-              <span>By <strong>CLUTCH Staff</strong> · <strong>Homer D. Sayson</strong> desk</span>
+              <span>By <strong>SPORTY Staff</strong> · <strong>Homer D. Sayson</strong> desk</span>
               <span>·</span><span>1.5 min read</span>
               <span>·</span><span>Nov 6, 2026, 09:18 PHT</span>
               <span>·</span><span>Lines: OKBet PH</span>
@@ -74,7 +74,7 @@ export default function SunsVsMagicPage() {
             <div className="sub-form" style={{ margin: "24px 0", background: "var(--bg-card2)", border: "1px solid var(--mint)", borderRadius: 10, padding: 14, alignItems: "center" }}>
               <div style={{ flex: 1 }}>
                 <strong style={{ color: "var(--text)" }}>Get picks like this every morning at 7AM PHT.</strong>
-                <div style={{ fontSize: 11, color: "var(--text-muted)" }}>CLUTCH DAILY newsletter — free, no spam, cancel anytime.</div>
+                <div style={{ fontSize: 11, color: "var(--text-muted)" }}>SPORTY DAILY newsletter — free, no spam, cancel anytime.</div>
               </div>
               <Link className="btn btn-accent" href="/newsletter">SUBSCRIBE FREE</Link>
             </div>

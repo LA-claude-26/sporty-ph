@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const NAMES: Record<string, string> = {
-  "CLUTCH PH": "C",
+  "SPORTY": "S",
   BALLSHOT: "B",
   "BUZZER PH": "B",
   "FASTBREAK PH": "F",
@@ -27,7 +27,7 @@ const PILLS = [
 ]
 
 export function Header() {
-  const [name, setName] = useState("CLUTCH PH")
+  const [name, setName] = useState("SPORTY")
   const pathname = usePathname()
 
   const toggleTheme = () => {
@@ -39,7 +39,7 @@ export function Header() {
     <header className="topbar">
       <div className="topbar-inner">
         <div className="logo">
-          <Link href="/" className="logo-mark" aria-label="CLUTCH PH home">
+          <Link href="/" className="logo-mark" aria-label="SPORTY PH home">
             {NAMES[name] || name[0]}
           </Link>
           <div>
