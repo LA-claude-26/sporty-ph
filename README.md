@@ -20,24 +20,26 @@ npm run start    # production server
 
 ## Deploy to Vercel
 
-The Vercel project is **`sporty`** on the **leadadvisors** team. Source of truth is
-this repo: `github.com/LA-claude-26/sporty-ph`.
+The repo `github.com/LA-claude-26/sporty-ph` is Git-connected to the Vercel project
+**`sporty-ph`** on the **leadadvisors** team. Every push to a branch builds a preview;
+every merge to `main` builds production.
 
-### Getting a public URL (one-time, in the Vercel dashboard)
+### Which URL to share
 
-Hashed deployment URLs like `sporty-xxxxxxxx-leadadvisors.vercel.app` are
-**preview** deployments. Vercel protects them with a login wall by default, so
-anyone outside the team sees "Authentication Required". To share a link:
+| URL shape | What it is | Who can open it |
+|---|---|---|
+| `sporty-ph-xxxxxxxx-leadadvisors.vercel.app` | Hashed per-deployment URL | Vercel team members only (login wall, by default) |
+| `sporty-ph-git-<branch>-leadadvisors.vercel.app` | Branch preview | Vercel team members only (login wall, by default) |
+| `sporty-ph.vercel.app` | Production domain, updated on every merge to `main` | **Anyone** |
 
-1. **Project → Settings → Git** → connect `LA-claude-26/sporty-ph`, production
-   branch `main`. Every push to `main` then builds a production deployment at the
-   project's `*.vercel.app` production domain (no login wall).
-2. **Project → Settings → Deployment Protection** → set *Vercel Authentication* to
-   **Only Preview Deployments** (production stays public). Choose **Disabled** only
-   if preview links also need to be shareable.
-3. Optional: **Settings → Domains** → add `sporty.ph` (or whichever domain is bought),
-   then set `NEXT_PUBLIC_SITE_URL=https://sporty.ph` under *Environment Variables*
-   so sitemap, robots and Open Graph tags use the custom domain.
+So: merge to `main` and share the production domain. No settings change is needed
+for that. If preview links must also be shareable, go to **Project → Settings →
+Deployment Protection** and set *Vercel Authentication* to **Disabled**, or keep it
+on and use the *Share* button on a deployment to mint a time-limited public link.
+
+Optional: **Settings → Domains** → add `sporty.ph` (or whichever domain is bought),
+then set `NEXT_PUBLIC_SITE_URL=https://sporty.ph` under *Environment Variables* so
+sitemap, robots and Open Graph tags use the custom domain.
 
 ### Build settings
 
