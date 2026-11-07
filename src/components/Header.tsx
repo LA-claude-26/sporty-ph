@@ -1,95 +1,34 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-const NAMES: Record<string, string> = {
-  "SPORTY": "S",
-  BALLSHOT: "B",
-  "BUZZER PH": "B",
-  "FASTBREAK PH": "F",
-  "FULLCOURT PH": "F",
-  HOOPBEAT: "H",
-  "TEMPO PH": "T",
-  "OT NEWS": "O",
-}
-
-const PILLS = [
-  { href: "/", label: "ALL" },
-  { href: "/article/ai-predictions", label: "NBA" },
-  { href: "/league/pba", label: "PBA" },
-  { href: "/#gilas", label: "GILAS" },
-  { href: "/#uaap", label: "UAAP/NCAA" },
-  { href: "/#pvl", label: "PVL" },
-  { href: "/odds", label: "BETTING" },
-  { href: "/newsletter", label: "NEWSLETTER", mint: true },
-]
-
 export function Header() {
-  const [name, setName] = useState("SPORTY")
-  const pathname = usePathname()
-
-  const toggleTheme = () => {
-    const h = document.documentElement
-    h.dataset.theme = h.dataset.theme === "light" ? "dark" : "light"
-  }
-
+  const p = usePathname()
   return (
-    <header className="topbar">
-      <div className="topbar-inner">
-        <div className="logo">
-          <Link href="/" className="logo-mark" aria-label="SPORTY PH home">
-            {NAMES[name] || name[0]}
-          </Link>
-          <div>
-            <div className="logo-name">{name}</div>
-            <div className="logo-tag">Sports · Trending · Odds</div>
-          </div>
-          <select
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="logo-dropdown"
-            title="Preview alternate brand names"
-            style={{
-              background: "none",
-              color: "var(--text-dim)",
-              fontSize: 11,
-              padding: "3px 6px",
-              border: "1px solid var(--border)",
-              borderRadius: 6,
-              cursor: "pointer",
-            }}
-          >
-            {Object.keys(NAMES).map((n) => (
-              <option key={n} value={n}>
-                {n}
-              </option>
-            ))}
-          </select>
+    <header className="site-header">
+      <div className="header-top shell">
+        <span>PHILIPPINES EDITION · TODAY 09:30 PHT</span>
+        <div style={{ display: "flex", gap: 14 }}>
+          <span>Decimal odds by OKBet (PAGCOR licensed)</span>
+          <Link href="/odds" style={{ color: "var(--mint-text)", fontWeight: 700 }}>Live Odds Board →</Link>
         </div>
-        <nav className="nav-pills" aria-label="League navigation">
-          {PILLS.map((p) => {
-            const active = pathname === p.href
-            return (
-              <Link
-                key={p.href}
-                href={p.href}
-                className={`pill ${active ? "active" : ""}`}
-                style={p.mint ? { color: "var(--mint)" } : undefined}
-              >
-                {p.label}
-              </Link>
-            )
-          })}
+      </div>
+      <div className="header-main shell">
+        <Link href="/" className="brand" aria-label="Sporty home">
+          <span className="brand-mark">S</span>
+          <span>SPORTY</span>
+          <span className="tagline">· Sports trending short stories</span>
+        </Link>
+        <nav className="nav">
+          <Link href="/" className={p === "/" ? "active" : ""}>Home</Link>
+          <Link href="/article/ai-predictions" className={p.startsWith("/article/ai") ? "active" : ""}>AI Picks</Link>
+          <Link href="/league/pba" className={p === "/league/pba" ? "active" : ""}>PBA</Link>
+          <Link href="/odds" className={p === "/odds" ? "active" : ""}>Odds</Link>
+          <Link href="/newsletter" className={p === "/newsletter" ? "active" : ""}>Newsletter</Link>
         </nav>
-        <div className="top-actions">
-          <button className="btn btn-ghost" id="themeToggle" onClick={toggleTheme} aria-label="Toggle theme">
-            ◐
-          </button>
-          <Link className="btn btn-accent" href="/newsletter">
-            SUBSCRIBE
-          </Link>
+        <div className="header-actions">
+          <Link href="/newsletter" className="btn-ink btn-mint" style={{ padding: "8px 13px", fontSize: 11 }}>Get Sporty Daily</Link>
         </div>
       </div>
     </header>

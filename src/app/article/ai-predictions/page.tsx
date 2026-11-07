@@ -12,33 +12,38 @@ export const metadata: Metadata = {
 export default function AiPredictionsPage() {
   return (
     <>
-      <div className="breaking">
-        <div className="breaking-inner">
-          <span className="breaking-tag">VARIATION 1</span>
-          <div className="breaking-text">
-            <strong>Covers-style AI Predictions post</strong> — full-slate table with pick chips, matchup deep dives, win probabilities, and season record. See also:{" "}
-            <Link href="/article/suns-vs-magic" style={{ color: "var(--mint)", textDecoration: "underline" }}>Variation 2 (game preview)</Link> ·{" "}
-            <Link href="/league/pba" style={{ color: "var(--mint)", textDecoration: "underline" }}>PBA hub</Link> ·{" "}
-            <Link href="/odds" style={{ color: "var(--mint)", textDecoration: "underline" }}>Odds board</Link> ·{" "}
-            <Link href="/newsletter" style={{ color: "var(--mint)", textDecoration: "underline" }}>Newsletter funnel</Link>
-          </div>
+      <div className="shell" style={{ marginTop: 8 }}>
+        <div className="break-bar" style={{ borderRadius: 4 }}>
+          <span className="break-chip">FORMAT 01</span>
+          <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <strong>Covers-style AI predictions post</strong> — full-slate table with pick chips, matchup deep dives, win-probability bars and season record. See also:{" "}
+            <Link href="/article/suns-vs-magic" style={{ color: "#fff", textDecoration: "underline" }}>game preview</Link> ·{" "}
+            <Link href="/league/pba" style={{ color: "#fff", textDecoration: "underline" }}>PBA hub</Link> ·{" "}
+            <Link href="/odds" style={{ color: "#fff", textDecoration: "underline" }}>odds board</Link> ·{" "}
+            <Link href="/newsletter" style={{ color: "#fff", textDecoration: "underline" }}>newsletter</Link>
+          </span>
         </div>
       </div>
 
-      <div className="page-shell" style={{ marginTop: 18 }}>
-        <div className="sidewinder-grid">
-          <main className="article-main">
-            <div className="article-badge">NBA · AI PREDICTIONS</div>
-            <h1 className="article-title">NBA AI Predictions Tonight: ATS Picks &amp; Score Projections for Every Game</h1>
+      <div className="shell" style={{ marginTop: 18 }}>
+        <div className="home-body" style={{ gridTemplateColumns: "1fr 300px" }}>
+          <main style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, padding: 30 }}>
+            <span className="tag-pill tag-green">NBA · AI Predictions</span>
+            <h1 className="article-h">NBA AI predictions tonight: ATS picks and projected final scores for every game</h1>
             <div className="article-meta">
-              <span>By <strong>SPORTY Staff</strong> · <strong>Odds Desk</strong></span>
-              <span>·</span><span>Updated: Nov 6, 2026, 09:18 PHT</span>
-              <span>·</span><span>Lines: OKBet PH (decimal)</span>
-              <span>·</span><span>3 min read</span>
+              <span>By Sporty Staff · Odds desk</span>
+              <span className="meta-dot">·</span>
+              <span>Updated 6 Nov 2026, 09:30 PHT</span>
+              <span className="meta-dot">·</span>
+              <span style={{ color: "var(--mint-text)", fontWeight: 700 }}>OKBet decimal lines</span>
+              <span className="meta-dot">·</span>
+              <span>3 min read</span>
             </div>
 
-            <div className="jump-links">
-              <span style={{ fontSize: 11, color: "var(--text-muted)", alignSelf: "center" }}>JUMP TO:</span>
+            <div className="article-hero" style={{ backgroundImage: "url('/images/hero-nba-arena.jpg')" }} />
+
+            <div className="guide-links" style={{ margin: "0 0 16px", flexWrap: "wrap", fontSize: 11 }}>
+              <span style={{ color: "var(--ink-faint)" }}>JUMP TO:</span>
               <a href="#slate">Full slate table</a>
               <a href="#bestpick">Best pick</a>
               <a href="#upset">Biggest upset</a>
@@ -46,109 +51,122 @@ export default function AiPredictionsPage() {
               <a href="#how">How it works</a>
             </div>
 
-            <div className="article-hero-img" style={{ backgroundImage: "url('/images/hero-nba-arena.jpg')" }} />
-
             <div className="article-body">
-              <p>
-                After an <strong>11–3 week outright</strong> and an <strong>8–6 finish against the spread</strong>, we carry a winning ATS record into tonight's NBA slate. Our custom forecasting model projects the final score for each matchup, then compares those projections against the latest decimal odds from <strong>OKBet</strong> — the PAGCOR-licensed sportsbook — to generate ATS and Over/Under selections.
-              </p>
+              <p className="dek">We trained our forecasting model to project the final score for every game on tonight's NBA slate, then compared those projections with the latest decimal odds from OKBet to find the day's ATS and Over/Under edges.</p>
+
+              <p>After an <strong>11–3 week outright</strong> and an <strong>8–6 finish against the spread</strong>, we carry a winning ATS record into tonight's slate. Our model projects a final score for each matchup before comparing with OKBet — the PAGCOR-licensed sportsbook — prices. Below are our selections and projected scores for the full card.</p>
 
               <h2 id="slate">AI picks for the full slate</h2>
-              <p style={{ fontSize: 12, color: "var(--text-dim)" }}>All lines from OKBet; all times Philippine (PHT). Click any matchup row for the deep dive.</p>
+              <p style={{ fontSize: 13, color: "var(--ink-muted)" }}>All lines from OKBet; all times Philippine (PHT). Click any matchup row for the deep dive.</p>
 
-              <table className="pred-table">
+              <table className="slate-table">
                 <thead>
-                  <tr><th>Tip-off</th><th>Matchup</th><th>ATS Pick</th><th>O/U Pick</th><th>Projected</th></tr>
+                  <tr><th>Tip-off</th><th>Matchup</th><th>ATS pick</th><th>O/U pick</th><th>Projected</th></tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>Sat 10:00 AM</td>
-                    <td><TeamLogo team="phx" className="mr-1" /> PHX @ ORL <TeamLogo team="orl" className="ml-1" /></td>
-                    <td><span className="pred-pick">ORL +1 (1.91)</span></td>
-                    <td><span className="pred-pick">OVER 222.5</span></td>
-                    <td>ORL 114 PHX 111</td>
+                    <td><span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}><TeamLogo team="phx" /> PHX @ ORL <TeamLogo team="orl" /></span></td>
+                    <td><a className="pick-chip pick-green" href="#match-orl">ORL +1 (1.91)</a></td>
+                    <td><a className="pick-chip pick-blue" href="#match-orl">OVER 222.5</a></td>
+                    <td>ORL 114, PHX 111</td>
                   </tr>
                   <tr>
                     <td>Sat 10:00 AM</td>
-                    <td><TeamLogo team="lal" className="mr-1" /> LAL @ DEN <TeamLogo team="den" className="ml-1" /></td>
-                    <td><span className="pred-pick">DEN +1.5</span></td>
-                    <td><span className="pred-pick">UNDER 226</span></td>
-                    <td>DEN 110 LAL 108</td>
+                    <td><span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}><TeamLogo team="lal" /> LAL @ DEN <TeamLogo team="den" /></span></td>
+                    <td><a className="pick-chip pick-green" href="#match-den">DEN +1.5 (2.00)</a></td>
+                    <td><a className="pick-chip pick-blue" href="#match-den">UNDER 226</a></td>
+                    <td>DEN 110, LAL 108</td>
                   </tr>
                   <tr>
                     <td>Sat 10:00 AM</td>
-                    <td><TeamLogo team="bos" className="mr-1" /> BOS @ PHI <TeamLogo team="phi" className="ml-1" /></td>
-                    <td><span className="pred-pick">BOS -6.5</span> <span className="pred-badge badge-best">BEST PICK</span></td>
-                    <td><span className="pred-pick">UNDER 218</span></td>
-                    <td>BOS 113 PHI 102</td>
+                    <td><span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}><TeamLogo team="bos" /> BOS @ PHI <TeamLogo team="phi" /></span></td>
+                    <td><a className="pick-chip pick-green" href="#bestpick">BOS −6.5 · BEST PICK</a></td>
+                    <td><a className="pick-chip pick-blue" href="#bestpick">UNDER 218</a></td>
+                    <td>BOS 113, PHI 102</td>
                   </tr>
                   <tr>
                     <td>Sat 10:30 AM</td>
-                    <td><TeamLogo team="dal" className="mr-1" /> DAL @ IND <TeamLogo team="ind" className="ml-1" /></td>
-                    <td><span className="pred-pick">IND +5.5</span> <span className="pred-badge badge-upset">UPSET</span></td>
-                    <td><span className="pred-pick">OVER 228</span></td>
-                    <td>IND 118 DAL 114</td>
+                    <td><span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}><TeamLogo team="dal" /> DAL @ IND <TeamLogo team="ind" /></span></td>
+                    <td><a className="pick-chip pick-green" href="#upset">IND +5.5 · UPSET</a></td>
+                    <td><a className="pick-chip pick-blue" href="#upset">OVER 228</a></td>
+                    <td>IND 118, DAL 114</td>
                   </tr>
                 </tbody>
               </table>
 
-              <h2 id="bestpick">Best Pick: Celtics at 76ers</h2>
-              <div className="matchup-card">
-                <div className="matchup-head"><span>MODEL PROJECTION</span><span>BOS -6.5 · BEST PRICE 1.45 @ OKBET</span></div>
-                <div className="matchup-scoreline">
-                  <div className="matchup-side"><TeamLogo team="bos" /> Boston Celtics 113</div>
-                  <div className="matchup-prob">win prob <strong>72%</strong><div className="prob-bar"><div className="prob-fill" style={{ width: "72%" }} /></div></div>
-                  <div className="matchup-side">102 Philadelphia 76ers <TeamLogo team="phi" /></div>
+              <h2 id="bestpick">Best pick: Celtics at 76ers</h2>
+              <div className="match-card">
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "var(--ink-faint)", textTransform: "uppercase", fontWeight: 800, letterSpacing: "0.06em", marginBottom: 8 }}>
+                  <span>Model projection</span><span>BOS −6.5 · best price 1.45 at OKBet</span>
                 </div>
-                <p style={{ fontSize: 13, color: "var(--text-dim)" }}>
-                  The Celtics are 7–2 ATS in their last nine, with the NBA's top-rated offense facing a Philadelphia team on a back-to-back. The Sixers are covering just 41% of home games this season. Boston is projected to win by 11 with the total comfortably staying under the 218 line.
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+                  <div className="match-score"><span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><TeamLogo team="bos" /> Boston Celtics 113</span></div>
+                  <div style={{ textAlign: "center", fontSize: 11, fontFamily: "var(--font-mono)" }}>
+                    win probability <strong>72%</strong>
+                    <div className="prob-bar"><div className="prob-home" style={{ width: "72%" }} /></div>
+                  </div>
+                  <div className="match-score"><span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>102 Philadelphia 76ers <TeamLogo team="phi" /></span></div>
+                </div>
+                <p style={{ fontSize: 13, color: "var(--ink-muted)", margin: "12px 0" }}>
+                  The Celtics are 7–2 ATS in their last nine, with the NBA's top-rated offence facing a Philadelphia team on a back-to-back. The Sixers are covering just 41% of home games this season. Boston is projected to win by 11 with the total comfortably staying under the 218 line.
                 </p>
-                <div className="matchup-buttons">
-                  <a className="matchup-btn" href="#bet">BOS -6.5 ↗ 1.45</a>
-                  <a className="matchup-btn" href="#bet">UNDER 218 ↗</a>
-                  <Link className="matchup-btn" href="/odds" style={{ background: "var(--mint)", color: "#0B0F17", borderColor: "var(--mint)" }}>Full game preview →</Link>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <a className="btn-ink btn-mint" href="#bet" style={{ fontSize: 11 }}>BOS −6.5 ↗ 1.45</a>
+                  <a className="btn-ink" href="#bet" style={{ fontSize: 11, background: "var(--surface-subtle)", color: "var(--ink)", border: "1px solid var(--border)" }}>UNDER 218 ↗</a>
+                  <Link className="btn-ink" href="/odds" style={{ fontSize: 11, background: "var(--surface-subtle)", color: "var(--ink)", border: "1px solid var(--border)" }}>Full game preview →</Link>
                 </div>
               </div>
 
-              <h2 id="upset">Biggest Upset: Pacers over Mavericks</h2>
-              <div className="matchup-card">
-                <div className="matchup-head"><span>MODEL PROJECTION</span><span>IND +5.5 · BEST PRICE 2.65 @ OKBET</span></div>
-                <div className="matchup-scoreline">
-                  <div className="matchup-side"><TeamLogo team="ind" /> Indiana Pacers 118</div>
-                  <div className="matchup-prob">market 29% · model <strong>48%</strong><div className="prob-bar"><div className="prob-fill" style={{ width: "48%" }} /></div></div>
-                  <div className="matchup-side">114 Dallas Mavericks <TeamLogo team="dal" /></div>
+              <h2 id="upset">Biggest upset: Pacers over Mavericks</h2>
+              <div className="match-card">
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "var(--ink-faint)", textTransform: "uppercase", fontWeight: 800, letterSpacing: "0.06em", marginBottom: 8 }}>
+                  <span>Model projection</span><span>IND +5.5 · best price 2.05 at OKBet</span>
                 </div>
-                <p style={{ fontSize: 13, color: "var(--text-dim)" }}>
-                  Dallas just allowed 128 points in an overtime loss to Memphis; the Mavericks are 6–2 to the Over this season. Indiana's pace matches up favorably against the NBA's 24th-ranked perimeter defense. The +5.5 spread provides the widest value wedge of the night.
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+                  <div className="match-score"><span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><TeamLogo team="ind" /> Indiana Pacers 118</span></div>
+                  <div style={{ textAlign: "center", fontSize: 11, fontFamily: "var(--font-mono)" }}>
+                    market 29% · model <strong>48%</strong>
+                    <div className="prob-bar"><div className="prob-home" style={{ width: "48%" }} /></div>
+                  </div>
+                  <div className="match-score"><span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>114 Dallas Mavericks <TeamLogo team="dal" /></span></div>
+                </div>
+                <p style={{ fontSize: 13, color: "var(--ink-muted)", margin: "12px 0" }}>
+                  Dallas just allowed 128 points in an overtime loss to Memphis; the Mavericks are 6–2 to the Over this season. Indiana's pace matches up favourably against the NBA's 24th-ranked perimeter defence. The +5.5 spread provides the widest value wedge of the night.
                 </p>
-                <div className="matchup-buttons">
-                  <a className="matchup-btn" href="#bet">IND +5.5 ↗ 2.05</a>
-                  <a className="matchup-btn" href="#bet">OVER 228 ↗</a>
-                  <Link className="matchup-btn" href="/odds" style={{ background: "var(--mint)", color: "#0B0F17", borderColor: "var(--mint)" }}>Full game preview →</Link>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <a className="btn-ink btn-mint" href="#bet" style={{ fontSize: 11 }}>IND +5.5 ↗ 2.05</a>
+                  <a className="btn-ink" href="#bet" style={{ fontSize: 11, background: "var(--surface-subtle)", color: "var(--ink)", border: "1px solid var(--border)" }}>OVER 228 ↗</a>
+                  <Link className="btn-ink" href="/odds" style={{ fontSize: 11, background: "var(--surface-subtle)", color: "var(--ink)", border: "1px solid var(--border)" }}>Full game preview →</Link>
                 </div>
               </div>
 
-              <h2>Matchup: Suns vs Magic — injuries flip the edge</h2>
-              <div className="matchup-card">
-                <div className="matchup-head"><span>MODEL PROJECTION</span><span>PHX -1 · BEST PRICE 1.90 @ OKBET</span></div>
-                <div className="matchup-scoreline">
-                  <div className="matchup-side"><TeamLogo team="orl" /> Orlando Magic 114</div>
-                  <div className="matchup-prob">win prob <strong>49%</strong><div className="prob-bar"><div className="prob-fill" style={{ width: "49%" }} /></div></div>
-                  <div className="matchup-side">111 Phoenix Suns <TeamLogo team="phx" /></div>
+              <h2 id="match-orl">Matchup: Suns vs Magic — injuries flip the edge</h2>
+              <div className="match-card">
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "var(--ink-faint)", textTransform: "uppercase", fontWeight: 800, letterSpacing: "0.06em", marginBottom: 8 }}>
+                  <span>Model projection</span><span>PHX −1 · best price 1.90 at OKBet</span>
                 </div>
-                <p style={{ fontSize: 13, color: "var(--text-dim)" }}>
-                  Phoenix has lost 9 of 10 and allows 124.3 PPG; Orlando sits five players (Banchero, Suggs, Isaac, Penda, Nelson) but has covered 8 of the last 10 head-to-head meetings. The model shades the Magic despite the injuries.
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+                  <div className="match-score"><span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><TeamLogo team="orl" /> Orlando Magic 114</span></div>
+                  <div style={{ textAlign: "center", fontSize: 11, fontFamily: "var(--font-mono)" }}>
+                    win probability <strong>49%</strong>
+                    <div className="prob-bar"><div className="prob-home" style={{ width: "49%" }} /></div>
+                  </div>
+                  <div className="match-score"><span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>111 Phoenix Suns <TeamLogo team="phx" /></span></div>
+                </div>
+                <p style={{ fontSize: 13, color: "var(--ink-muted)", margin: "12px 0" }}>
+                  Phoenix has lost nine of ten and allows 124.3 PPG; Orlando sits five players (Banchero, Suggs, Isaac, Penda, Nelson) but has covered eight of the last ten head-to-head meetings. The model shades the Magic despite the injuries.
                 </p>
-                <div className="matchup-buttons">
-                  <Link className="matchup-btn" href="/article/suns-vs-magic" style={{ background: "var(--mint)", color: "#0B0F17", borderColor: "var(--mint)" }}>Read full 250-word betting preview →</Link>
-                  <a className="matchup-btn" href="#bet">ORL +1 ↗ 1.91</a>
-                  <a className="matchup-btn" href="#bet">OVER 222.5 ↗</a>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <Link className="btn-ink btn-mint" href="/article/suns-vs-magic" style={{ fontSize: 11 }}>Read the full 250-word betting preview →</Link>
+                  <a className="btn-ink" href="#bet" style={{ fontSize: 11, background: "var(--surface-subtle)", color: "var(--ink)", border: "1px solid var(--border)" }}>ORL +1 ↗ 1.91</a>
+                  <a className="btn-ink" href="#bet" style={{ fontSize: 11, background: "var(--surface-subtle)", color: "var(--ink)", border: "1px solid var(--border)" }}>OVER 222.5 ↗</a>
                 </div>
               </div>
 
               <h2 id="record">Season record</h2>
-              <table className="pred-table">
-                <thead><tr><th>Period</th><th>Straight-Up</th><th>ATS</th><th>O/U</th><th>Best Pick</th></tr></thead>
+              <table className="slate-table">
+                <thead><tr><th>Period</th><th>Straight-up</th><th>ATS</th><th>O/U</th><th>Best pick</th></tr></thead>
                 <tbody>
                   <tr><td>Last week</td><td>11–3</td><td>8–6</td><td>7–7</td><td>1–0</td></tr>
                   <tr><td>Season</td><td>74–46</td><td>62–59</td><td>54–67</td><td>4–4</td></tr>
@@ -156,49 +174,27 @@ export default function AiPredictionsPage() {
               </table>
 
               <h2 id="how">How our AI predictions work</h2>
-              <p>
-                Our custom forecasting model combines team ratings, pace, shooting-location profiles, and player-availability data to project a final score for every matchup. Confirmed injury reports inform the assumptions, but complete information is not always available at publish time. We then compare those projections with the latest OKBet spreads and totals to produce our ATS and Over/Under picks. Best Pick identifies the featured selection, not a guaranteed outcome.
-              </p>
-              <p style={{ fontSize: 11, color: "var(--text-muted)" }}>
-                <strong>Affiliate Disclosure:</strong> Links to sportsbooks may earn us a commission at no cost to you. Only bet what you can afford to lose. 21+ · PAGCOR licensed partners only.
-              </p>
+              <p>Our custom forecasting model combines team ratings, pace, shot-location profiles and player-availability data to project a final score for every matchup. Confirmed injury reports inform the assumptions; complete information is not always available at publish time. We then compare those projections with the latest OKBet spreads and totals to produce our ATS and Over/Under picks. Best Pick identifies the featured selection, not a guaranteed outcome.</p>
+              <p style={{ fontSize: 11, color: "var(--ink-faint)" }}><strong>Affiliate disclosure:</strong> Links to sportsbooks may earn us a commission at no cost to you. Only bet what you can afford to lose. 21+ · PAGCOR-licensed partners only.</p>
             </div>
 
-            <div className="sub-form" style={{ margin: "24px 0", background: "var(--bg-card2)", border: "1px solid var(--mint)", borderRadius: 10, padding: 14, alignItems: "center" }}>
-              <div style={{ flex: 1 }}>
-                <strong style={{ color: "var(--text)" }}>Get tonight's best picks in your inbox every morning.</strong>
-                <div style={{ fontSize: 11, color: "var(--text-muted)" }}>SPORTY DAILY · 7AM PHT · NBA + PBA betting edges · free</div>
+            <div style={{ margin: "24px 0", background: "var(--surface-subtle)", border: "1px solid var(--mint)", borderRadius: 10, padding: 16, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <strong style={{ fontSize: 14 }}>Get tonight's best picks in your inbox every morning.</strong>
+                <div style={{ fontSize: 11, color: "var(--ink-faint)" }}>SPORTY DAILY · 7:00 AM PHT · NBA + PBA betting edges · free</div>
               </div>
-              <Link className="btn btn-accent" href="/newsletter">SUBSCRIBE FREE</Link>
+              <Link className="btn-ink btn-mint" href="/newsletter" style={{ fontSize: 11 }}>Subscribe free</Link>
             </div>
 
-            {/* 3-TIER RECOMMENDATIONS */}
-            <section className="reco-section">
-              <div className="section-head"><span className="section-title">MORE IN THIS SERIES</span><span className="section-link">NBA HUB →</span></div>
-              <div className="reco-grid">
-                <Link className="reco-card" href="/article/suns-vs-magic" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-matchup.jpg')" }} /><div className="reco-body"><div className="reco-tag">GAME PREVIEW</div><div className="reco-title">Suns vs Magic: Orlando covers 8 of last 10 despite five injuries</div><div className="reco-foot">1.5 min read</div></div></Link>
-                <Link className="reco-card" href="/article/ai-predictions#slate" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-finals.jpg')" }} /><div className="reco-body"><div className="reco-tag">ODDS WATCH</div><div className="reco-title">Celtics -6.5 road favorites at 76ers: Boston 7-2 ATS in last nine</div><div className="reco-foot">1 min read</div></div></Link>
-                <Link className="reco-card" href="/article/ai-predictions" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-lebron.jpg')" }} /><div className="reco-body"><div className="reco-tag">FUTURES</div><div className="reco-title">NBA championship odds mover: Thunder shorten to 5.50 after 9-1 start</div><div className="reco-foot">2 min read</div></div></Link>
+            {/* RECOMMENDATIONS */}
+            <div className="recos-wrap">
+              <div className="recos-h">More in this series</div>
+              <div className="recos-grid">
+                <Link className="reco-card" href="/article/suns-vs-magic"><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-matchup.jpg')" }} /><div className="reco-copy"><span className="reco-tag">Game preview</span><div className="reco-title">Suns vs Magic: Orlando covers 8 of last 10 despite five injuries</div><span className="reco-time">2 min read</span></div></Link>
+                <Link className="reco-card" href="/article/ai-predictions"><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-finals.jpg')" }} /><div className="reco-copy"><span className="reco-tag">Odds watch</span><div className="reco-title">Celtics -6.5 road favourites at 76ers: Boston 7-2 ATS in last nine</div><span className="reco-time">1.5 min read</span></div></Link>
+                <Link className="reco-card" href="/league/pba"><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-celebration.jpg')" }} /><div className="reco-copy"><span className="reco-tag">PBA SF Gm4</span><div className="reco-title">SMB moneyline 1.85 → 1.72 after heavy Manila action</div><span className="reco-time">PBA</span></div></Link>
               </div>
-            </section>
-
-            <section className="reco-section">
-              <div className="section-head"><span className="section-title">TRENDING BETS TODAY</span><span className="src-badge">LINE MOVEMENT</span></div>
-              <div className="reco-grid">
-                <Link className="reco-card" href="/league/pba" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-celebration.jpg')" }} /><div className="reco-body"><div className="reco-tag">PBA SF GM4</div><div className="reco-title">SMB moneyline 1.85 → 1.72 after heavy Manila action</div><div className="reco-foot">PBA</div></div></Link>
-                <Link className="reco-card" href="/odds" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-arena.jpg')" }} /><div className="reco-body"><div className="reco-tag">NBA SPREAD</div><div className="reco-title">Celtics -6.5 seeing 78% public money vs 76ers</div><div className="reco-foot">PUBLIC BET</div></div></Link>
-                <Link className="reco-card" href="/league/pba" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-spike.jpg')" }} /><div className="reco-body"><div className="reco-tag">UAAP TITLE</div><div className="reco-title">UP Maroons championship futures shorten to 1.30</div><div className="reco-foot">FUTURES</div></div></Link>
-              </div>
-            </section>
-
-            <section className="reco-section">
-              <div className="section-head"><span className="section-title">YOU MAY ALSO LIKE</span></div>
-              <div className="reco-grid">
-                <Link className="reco-card" href="/article/suns-vs-magic" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-pvl.jpg')" }} /><div className="reco-body"><div className="reco-tag">GILAS</div><div className="reco-title">Kai Sotto and Carl Tamayo ruled out of FIBA window</div><div className="reco-foot">1 min read</div></div></Link>
-                <Link className="reco-card" href="/odds" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-finals.jpg')" }} /><div className="reco-body"><div className="reco-tag">GUIDE</div><div className="reco-title">How to read decimal odds on OKBet: beginner's 60-second explainer</div><div className="reco-foot">EVERGREEN</div></div></Link>
-                <Link className="reco-card" href="/article/ai-predictions" style={{ textDecoration: "none" }}><div className="reco-thumb" style={{ backgroundImage: "url('/images/story-arena.jpg')" }} /><div className="reco-body"><div className="reco-tag">COLLEGIATE</div><div className="reco-title">UP Maroons outlast Adamson 82-70, cement solo first place</div><div className="reco-foot">UAAP S89</div></div></Link>
-              </div>
-            </section>
+            </div>
           </main>
 
           <Sidewinder />
