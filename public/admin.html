@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sporty — Editorial Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAFAF9;--card:#FFFFFF;--border:#EAEAEA;--ink:#111111;--sub:#6E6E6E;--mint:#00C896;--mint-dim:#00c8961a;--amber:#F5A623;--red:#E24C4C;--font:Inter,system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100vh}
+header.top{background:#fff;border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 20px;position:sticky;top:0;z-index:40;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.mark{width:28px;height:28px;border-radius:6px;background:var(--mint);color:#fff;font-weight:700;display:grid;place-content:center;font-size:14px}
+.brand-name{font-weight:700;letter-spacing:.02em}.brand-sub{color:var(--sub);font-size:12px;margin-left:8px;font-weight:400}
+.top-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--sub)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:500;border:1px solid var(--border);background:#fff}
+.chip.live{border-color:var(--mint);color:#0a8a64}.chip.live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.shell{display:flex;min-height:calc(100vh - 56px)}
+nav.side{width:230px;background:#fff;border-right:1px solid var(--border);padding:14px 10px;flex-shrink:0}
+nav.side .section-title{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--sub);padding:8px 10px 4px;font-weight:600}
+nav.side a{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:6px;color:#333;text-decoration:none;font-size:13px;font-weight:500}
+nav.side a:hover{background:#f4f4f4}nav.side a.active{background:var(--mint-dim);color:#0a8a64;font-weight:600}
+nav.side a .cnt{font-size:11px;color:var(--sub);font-weight:400}
+main{flex:1;padding:24px;overflow-x:hidden}
+h1.view-title{font-size:22px;font-weight:700;margin-bottom:4px}
+.view-sub{color:var(--sub);font-size:13px;margin-bottom:18px}
+.toolbar{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.toolbar input,.toolbar select{font:inherit;font-size:13px;padding:8px 12px;border:1px solid var(--border);border-radius:6px;background:#fff}
+.toolbar input{flex:1;min-width:240px}
+button.btn{font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:6px;border:1px solid var(--border);background:#fff;cursor:pointer}
+button.btn:hover{background:#f4f4f4}button.btn.primary{background:var(--mint);border-color:var(--mint);color:#fff}button.btn.primary:hover{filter:brightness(.94)}
+button.btn.sub{background:transparent}button.btn.sm{font-size:11px;padding:4px 9px}
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.kpi .num{font-size:20px;font-weight:700}.kpi .lab{font-size:11px;color:var(--sub);margin-top:2px}
+.wire-list{display:flex;flex-direction:column;gap:10px}
+.wire{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.wire:hover{border-color:#ccc}
+.wire .meta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--sub);margin-bottom:6px;flex-wrap:wrap}
+.wire .title{font-size:14px;font-weight:600;line-height:1.35;margin-bottom:4px}
+.wire .lede{font-size:12px;color:var(--sub);line-height:1.45;margin-bottom:8px}
+.wire .ph{font-size:11px;color:#0a8a64;background:var(--mint-dim);padding:3px 7px;border-radius:4px;display:inline-block}
+.wire .score{font-size:11px;font-weight:600;color:#555}
+.wire .actions{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.pill{padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600}
+.pill.src-grok{background:#111;color:#fff}.pill.src-perp{background:#e8f4fc;color:#1d6fa5}.pill.src-trends{background:#fde8e3;color:#c0462f}
+.pill.auto{background:#eaf8ef;color:#0a8a64}.pill.manual{background:#fdf3e0;color:#b46900}
+.pill.cat{background:#f2f2f0;color:#555}
+.pill.league{background:#eef1f4;color:#445}
+.cols{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;overflow-x:auto}
+.col{background:#f4f4f3;border-radius:8px;padding:10px;min-height:520px;display:flex;flex-direction:column}
+.col-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--sub);padding:4px 6px 10px;display:flex;justify-content:space-between}
+.tcard{background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px;margin-bottom:8px;font-size:12px;cursor:pointer}
+.tcard:hover{border-color:#bbb}
+.tcard .tt{font-weight:600;line-height:1.35;margin-bottom:4px}
+.tcard .sub{font-size:11px;color:var(--sub);margin-bottom:6px}
+.tcard .tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.tcard .who{font-size:11px;color:#888;display:flex;justify-content:space-between;align-items:center}
+.editor-layout{display:grid;grid-template-columns:1fr 340px;gap:20px}
+.panel{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px}
+.panel h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--sub);margin-bottom:5px}
+.field input,.field textarea,.field select{width:100%;font:inherit;font-size:13px;padding:9px 12px;border:1px solid var(--border);border-radius:6px;background:#fff}
+.field textarea{min-height:300px;font-family:inherit;line-height:1.6}
+.sidepanel .box{background:#f8f8f7;border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:12px;font-size:12px}
+.sidepanel .box h3{font-size:12px;font-weight:700;margin-bottom:6px}
+.check{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}
+.src-link{display:block;color:#1d6fa5;text-decoration:none;font-size:11px;margin:4px 0;word-break:break-all}
+.src-link:hover{text-decoration:underline}
+.rule-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.rule-row:last-child{border-bottom:0}
+.switch{width:40px;height:22px;background:#ddd;border-radius:999px;position:relative;cursor:pointer;transition:.2s;flex-shrink:0}
+.switch.on{background:var(--mint)}
+.switch::after{content:"";width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:2px;left:2px;transition:.2s}
+.switch.on::after{left:20px}
+.radar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.radar-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:12px}
+.bar-row .lab{width:150px;color:#333;font-weight:500}
+.bar{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;background:var(--mint)}
+.toast{position:fixed;bottom:20px;right:20px;background:#111;color:#fff;padding:10px 16px;border-radius:6px;font-size:13px;z-index:99;box-shadow:0 8px 30px rgba(0,0,0,.25);animation:fade 3s forwards}
+@keyframes fade{0%{opacity:0;transform:translateY(8px)}10%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;place-content:center;z-index:90}
+.modal.open{display:grid}
+.modal-box{background:#fff;border-radius:10px;padding:24px;width:520px;max-width:92vw}
+.empty{color:var(--sub);font-size:13px;padding:30px 0;text-align:center}
+footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:1100px){.cols{grid-template-columns:repeat(3,1fr)}.editor-layout{grid-template-columns:1fr}.kpi-row{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div style="display:flex;align-items:center;gap:16px">
+  <a class="brand" href="index.html" target="_blank" rel="noopener"><span class="mark">S</span><span class="brand-name">SPORTY</span></a>
+  <span class="brand-sub">Editorial Studio</span>
+ </div>
+ <div class="top-meta">
+  <span class="chip live" id="liveChip">50 wires today · simulated</span>
+  <span class="chip">demo · mock feeds</span>
+  <button class="btn sm" onclick="simulateFifty()">▶ simulate 50 wires/day</button>
+  <button class="btn sm" onclick="resetDemo()">reset demo data</button>
+  <a class="btn sm" href="index.html" target="_blank" rel="noopener">view site ↗</a>
+ </div>
+</header>
+<div class="shell">
+<nav class="side">
+ <div class="section-title">Feed</div>
+ <a href="#wires" class="nav-a active" data-v="wires"><span>📥 Incoming wires</span><span class="cnt" id="cntWires">50</span></a>
+ <a href="#topicbank" class="nav-a" data-v="topicbank"><span>📌 Topic bank</span><span class="cnt" id="cntTopics">12</span></a>
+ <div class="section-title" style="margin-top:12px">Editorial</div>
+ <a href="#editor" class="nav-a" data-v="editor"><span>✏️ Drafting desk</span><span class="cnt" id="cntDrafts">3</span></a>
+ <a href="#published" class="nav-a" data-v="published"><span>📤 Published</span><span class="cnt" id="cntPub">7</span></a>
+ <div class="section-title" style="margin-top:12px">Control</div>
+ <a href="#autopost" class="nav-a" data-v="autopost"><span>🤖 Auto-post rules</span></a>
+ <a href="#radar" class="nav-a" data-v="radar"><span>📊 Trends radar</span></a>
+ <a href="#analytics" class="nav-a" data-v="analytics"><span>📈 Analytics</span></a>
+</nav>
+<main>
+
+<!-- WIRES VIEW -->
+<section id="v-wires" class="view">
+ <h1 class="view-title">Incoming wires</h1>
+ <p class="view-sub">Real-time-simulated feed from Grok-4.7 drafts, Perplexity Sonar research with citations, and Google Trends signals. Grab to edit, or let auto-post handle eligible wires.</p>
+ <div class="kpi-row">
+  <div class="kpi"><div class="num" id="kWires">50</div><div class="lab">wires today</div></div>
+  <div class="kpi"><div class="num" id="kAuto">23</div><div class="lab">auto-post eligible</div></div>
+  <div class="kpi"><div class="num" id="kClaimed">12</div><div class="lab">in topic bank</div></div>
+  <div class="kpi"><div class="num" id="kPub">7</div><div class="lab">published today</div></div>
+  <div class="kpi"><div class="num">23m</div><div class="lab">avg wire→publish SLA</div></div>
+ </div>
+ <div class="toolbar">
+  <input id="q" placeholder="Search wires…" oninput="renderWires()">
+  <select id="fLeague" onchange="renderWires()"><option value="">All leagues</option><option>NBA</option><option>PBA</option><option>NFL</option><option>Soccer</option><option value="PH">PH (Kai/Gilas/UAAP/PVL)</option></select>
+  <select id="fSrc" onchange="renderWires()"><option value="">All sources</option><option value="Grok">Grok drafts</option><option value="Perplexity">Perplexity research</option><option value="Trends">Trends signals</option></select>
+  <select id="fAuto" onchange="renderWires()"><option value="">All eligibility</option><option value="1">Auto-post eligible</option><option value="0">Editor review required</option></select>
+  <button class="btn primary" onclick="openSim()">+ inject wire</button>
+ </div>
+ <div class="wire-list" id="wireList"></div>
+</section>
+
+<!-- TOPIC BANK VIEW -->
+<section id="v-topicbank" class="view" style="display:none">
+ <h1 class="view-title">Topic bank</h1>
+ <p class="view-sub">Every incoming wire lands here as a topic. Editors claim, draft, and advance stories. Click any card to open it in the editor.</p>
+ <div class="toolbar">
+  <input id="tq" placeholder="Filter topics…" oninput="renderBoard()" style="flex:1">
+  <button class="btn primary" onclick="newTopic()">+ new topic</button>
+ </div>
+ <div class="cols" id="board"></div>
+</section>
+
+<!-- EDITOR VIEW -->
+<section id="v-editor" class="view" style="display:none">
+ <h1 class="view-title">Drafting desk</h1>
+ <p class="view-sub">Edit the Grok wire draft against Perplexity citations and Trends context, then publish or mark auto-post.</p>
+ <div class="editor-layout">
+  <div class="panel">
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+    <div><span class="pill league" id="edLeague">NBA</span> <span class="pill" id="edSrc" style="margin-left:4px">Grok draft</span></div>
+    <div style="font-size:11px;color:var(--sub)">Slug preview: /article/<span id="edSlug">suns-vs-magic-nba</span> · last saved <span id="edSaved">just now</span></div>
+   </div>
+   <div class="field"><label>Headline</label><input id="edTitle" placeholder="Punchy headline with team names & hook" oninput="liveUpdate(this.value)"></div>
+   <div class="field"><label>Lede (1–2 sentences)</label><input id="edLede" placeholder="Who/what/why now — this feeds the wire feeds and newsletters"></div>
+   <div class="field"><label>90-second story (400–600 words)</label><textarea id="edBody" placeholder="Write or edit the wire body…"></textarea></div>
+   <div style="display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap">
+    <div style="display:flex;gap:8px">
+     <button class="btn" onclick="saveDraft()">Save draft</button>
+     <button class="btn" onclick="moveCol('Review')">Request review</button>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+     <label style="display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer"><input type="checkbox" id="edAutoFlag"> ⚡ Auto-post eligible</label>
+     <button class="btn primary" onclick="publishNow()">Publish now</button>
+    </div>
+   </div>
+  </div>
+  <div class="sidepanel">
+   <div class="box">
+    <h3>Perplexity citations & grounding</h3>
+    <div id="edCites"><a class="src-link" href="#" target="_blank">nba.com/news — game recap</a><a class="src-link" href="#" target="_blank">orlandomagic.com — injury report</a><a class="src-link" href="#" target="_blank">sports.yahoo.com — box score</a></div>
+    <div style="margin-top:8px;font-size:11px;color:var(--sub)">All 3 citations verified · no ungrounded claims</div>
+   </div>
+   <div class="box">
+    <h3>Grok angle suggestion</h3>
+    <div id="edAngle" style="font-size:12px;line-height:1.5">Lead with the Magic's 9th loss in 10 and injury list — that's the bettor angle. Close on decimal odds for PH audience.</div>
+   </div>
+   <div class="box">
+    <h3>SEO checklist</h3>
+    <div class="check" id="seo1">✔ Headline under 70 chars</div>
+    <div class="check" id="seo2">✔ Primary keyword in first 100 words</div>
+    <div class="check" id="seo3">✔ Internal link to league hub</div>
+    <div class="check" id="seo4">✔ 2+ external citations</div>
+   </div>
+   <div class="box">
+    <h3>Story metadata</h3>
+    <div class="field" style="margin:0"><label>League/team tag</label><input id="edTag" placeholder="NBA · PH audience"></div>
+    <div class="field" style="margin:8px 0 0"><label>Author</label><input id="edAuthor" value="Staff Reporter"></div>
+    <div class="field" style="margin:8px 0 0"><label>Status</label><select id="edStatus" onchange="moveCol(this.value)"><option>New</option><option selected>Claimed</option><option>Drafting</option><option>Review</option><option>Published</option></select></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- PUBLISHED VIEW -->
+<section id="v-published" class="view" style="display:none">
+ <h1 class="view-title">Published stories</h1>
+ <p class="view-sub">Stories currently live on the Sporty site, with simulated traffic, click-throughs, and newsletter conversions per story.</p>
+ <div class="toolbar"><input id="pq" placeholder="Filter published stories…" oninput="renderPub()" style="flex:1"></div>
+ <div class="wire-list" id="pubList"></div>
+</section>
+
+<!-- AUTO-POST RULES VIEW -->
+<section id="v-autopost" class="view" style="display:none">
+ <h1 class="view-title">Auto-post rules</h1>
+ <p class="view-sub">Control which incoming wires publish without editor review. Shows a client that autonomy is configurable, not reckless.</p>
+ <div class="panel">
+  <div class="rule-row"><div><strong>Official final-score wires</strong><div class="view-sub" style="margin:2px 0 0">Verified game results with official box-score citations</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
+  <div class="rule-row"><div><strong>Milestone / record wires</strong><div class="view-sub" style="margin:2px 0 0">e.g. Kane 400 goals, Mahomes passing record — high verification, low risk</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
+  <div class="rule-row"><div><strong>Rumor / trade-speculation wires</strong><div class="view-sub" style="margin:2px 0 0">Always hold for editor review; rumor tags require sourcing check</div></div><div class="switch" onclick="toggleR(this)"></div></div>
+  <div class="rule-row"><div><strong>Injury wires with betting impact</strong><div class="view-sub" style="margin:2px 0 0">Hold: decimal odds implications need human confirmation</div></div><div class="switch" onclick="toggleR(this)"></div></div>
+  <div class="rule-row"><div><strong>Confidence threshold ≥ 75</strong><div class="view-sub" style="margin:2px 0 0">Grok/Perplexity composite score gate before any auto-publish</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
+  <div class="rule-row"><div><strong>Throttle: max 20 auto-posts per day</strong><div class="view-sub" style="margin:2px 0 0">Caps volume during playoff spikes; excess wires queue for editors</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
+  <div class="rule-row"><div><strong>Auto-embed decimal odds chips</strong><div class="view-sub" style="margin:2px 0 0">OKBet odds pull for NBA & PBA wires</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
+ </div>
+</section>
+
+<!-- TRENDS RADAR VIEW -->
+<section id="v-radar" class="view" style="display:none">
+ <h1 class="view-title">Trends radar</h1>
+ <p class="view-sub">Google-Trends-style interest signals for Philippine and US sports audiences — this is why each wire is chosen and prioritized.</p>
+ <div class="radar-grid">
+  <div class="radar-card">
+   <div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:13px">Philippines — top sports search interest (7-day)</strong><span class="pill" style="background:#eef1f4;color:#445;font-size:11px">Google Trends PH</span></div>
+   <div id="radarPH"></div>
+  </div>
+  <div class="radar-card">
+   <div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:13px">US — trending leagues (24-hour)</strong><span class="pill" style="background:#eef1f4;color:#445;font-size:11px">Trends US</span></div>
+   <div id="radarUS"></div>
+  </div>
+  <div class="radar-card">
+   <strong style="font-size:13px">Perplexity research coverage</strong>
+   <p style="font-size:12px;color:var(--sub);margin:8px 0 12px;line-height:1.5">Every incoming wire is grounded with 2–4 cited sources (league releases, team press, official box scores). Editor citations drawer shows the exact URLs before publishing.</p>
+   <div class="check">✔ 42 wires grounded this morning</div>
+   <div class="check">✔ 0 ungrounded claims in topic bank</div>
+   <div class="check">✔ Avg citations per wire: 3.2</div>
+  </div>
+  <div class="radar-card">
+   <strong style="font-size:13px">Grok angle engine</strong>
+   <p style="font-size:12px;color:var(--sub);margin:8px 0 12px;line-height:1.5">Grok-4.7 drafts the 90-second wire copy and suggests the editorial angle (bettor angle, PH audience hook, dynasty narrative). The editor keeps the draft, rewrites it, or lets auto-post run it.</p>
+   <div class="check">✔ ~50 drafts/day target</div>
+   <div class="check">✔ 15–45 min wire→publish SLA</div>
+   <div class="check">✔ Philippine angle attached to every wire</div>
+  </div>
+ </div>
+</section>
+
+<!-- ANALYTICS VIEW -->
+<section id="v-analytics" class="view" style="display:none">
+ <h1 class="view-title">Analytics (demo data)</h1>
+ <p class="view-sub">Live metrics simulated for the demo. In production these wire to Plausible/GA4 + Beehiiv + your affiliate dashboard.</p>
+ <div class="kpi-row">
+  <div class="kpi"><div class="num">18,400</div><div class="lab">sessions today</div></div>
+  <div class="kpi"><div class="num">3.4</div><div class="lab">pages / session</div></div>
+  <div class="kpi"><div class="num">62.8%</div><div class="lab">mobile share (PH traffic)</div></div>
+  <div class="kpi"><div class="num">412</div><div class="lab">newsletter signups today</div></div>
+  <div class="kpi"><div class="num">2.24%</div><div class="lab">capture rate (goal ≥1%)</div></div>
+ </div>
+ <div class="radar-card" style="margin-top:8px">
+  <strong style="font-size:13px">Top articles by click-throughs today</strong>
+  <div id="topArticles" style="margin-top:10px"></div>
+ </div>
+</section>
+
+<footer class="note"><span>Sporty Editorial Studio — client demo build</span><span>Grok-4.7 drafts · Perplexity Sonar research · Trends signals · editors pick & publish</span></footer>
+</main>
+</div>
+
+<!-- INJECT WIRE MODAL -->
+<div class="modal" id="simModal"><div class="modal-box">
+ <h3>Inject a custom wire (demo)</h3>
+ <div class="field" style="margin-top:12px"><label>Headline</label><input id="mwTitle" placeholder="e.g. Jokić 31-13-9 in Nuggets win over Thunder…"></div>
+ <div class="field"><label>League</label><select id="mwLg"><option>NBA</option><option>PBA</option><option>NFL</option><option>Soccer</option><option value="PH">PH</option></select></div>
+ <div class="field"><label>Source</label><select id="mwSrc"><option>Grok draft</option><option>Perplexity research</option><option>Trends signal</option></select></div>
+ <div class="field"><label>Confidence / trend score (0–100)</label><input type="number" id="mwSc" value="84" min="0" max="100"></div>
+ <div style="display:flex;gap:8px;justify-content:flex-end">
+  <button class="btn" onclick="closeSim()">Cancel</button>
+  <button class="btn primary" onclick="injectWire()">Add wire</button>
+ </div>
+</div></div>
+
+<script>
+const S = {wires:[], topics:[], drafts:[], published:[], nextId:60};
+async function init(){
+ const r = await fetch('admin-data/wires.json');
+ const data = await r.json();
+ S.wires = data.map(w=>({...w}));
+ const pick = S.wires.slice(0,12);
+ S.topics = pick.map((w,i)=>({id:'t'+w.id, wire:w, col:['New','New','Claimed','Claimed','Drafting','Drafting','Review','Review','Review','Review','Review','Review'][i]||'New', who:i%3?'Editor '+(i%4+1):'You', prio:w.score>90?'P1':'P2'}));
+ S.drafts = S.wires.slice(12,15).map((w,i)=>({id:'d'+w.id,wire:w, col:'Drafting',who:'You',prio:'P1'}));
+ S.published = S.wires.slice(15,22).map((w,i)=>({id:'p'+w.id,wire:w, col:'Published',who:i%3?'Editor '+(i%4+1):'You',views:12400-i*1100, clicks:980-i*90, subs:41-i*3, time:['32m','1h','2h','2h','3h','4h','5h'][i]+' ago'}));
+ load();
+ renderAll();
+ window.addEventListener('hashchange',applyHash); applyHash();
+}
+function load(){try{const s=JSON.parse(localStorage.getItem('sporty-cms'));if(s){S.wires=s.wires;S.topics=s.topics;S.published=s.published;S.nextId=s.nextId||60;}}catch(e){}}
+function save(){try{localStorage.setItem('sporty-cms',JSON.stringify({wires:S.wires,topics:S.topics,published:S.published,nextId:S.nextId}))}catch(e){}}
+function resetDemo(){localStorage.removeItem('sporty-cms');init();toast('Demo data reset')}
+
+function renderAll(){renderKPIs();renderWires();renderBoard();renderPub();renderRadar();renderAnalytics();}
+function renderKPIs(){
+ document.getElementById('kWires').textContent=S.wires.length;
+ document.getElementById('kWires').textContent=S.wires.length;
+ document.getElementById('kAuto').textContent=S.wires.filter(w=>w.auto).length;
+ document.getElementById('kClaimed').textContent=S.topics.length;
+ document.getElementById('kPub').textContent=S.published.length;
+ document.getElementById('cntWires').textContent=S.wires.length;
+ document.getElementById('cntTopics').textContent=S.topics.length;
+ document.getElementById('cntDrafts').textContent=S.topics.filter(t=>t.col==='Drafting').length;
+ document.getElementById('cntPub').textContent=S.published.length;
+ document.getElementById('liveChip').textContent=S.wires.length+' wires today · live-simulated';
+}
+function srcPill(src){if(/Grok/.test(src))return 'src-grok';if(/Perplexity/.test(src))return 'src-perp';return 'src-trends';}
+function renderWires(){
+ const q=(document.getElementById('q').value||'').toLowerCase();
+ const lg=document.getElementById('fLeague').value;
+ const sc=document.getElementById('fSrc').value;
+ const au=document.getElementById('fAuto').value;
+ const list=S.wires.filter(w=>{
+  if(q && !w.title.toLowerCase().includes(q) && !(w.lede||'').toLowerCase().includes(q)) return false;
+  if(lg && w.league!==lg) return false;
+  if(sc && !w.src.includes(sc)) return false;
+  if(au!=='' && String(w.auto?1:0)!==au) return false;
+  return true;
+ });
+ const el=document.getElementById('wireList');
+ if(!list.length){el.innerHTML='<div class="empty">No wires match the filters.</div>';return}
+ el.innerHTML=list.map(w=>`
+  <div class="wire">
+   <div>
+    <div class="meta"><span class="pill league">${w.league}</span><span class="pill ${srcPill(w.src)}">${w.src}</span><span class="pill ${w.auto?'auto':'manual'}">${w.auto?'⚡ auto-post eligible':'editor review'}</span><span class="pill cat">${w.cat}</span><span class="score">trend score ${w.score}</span><span>· ${w.time}</span></div>
+    <div class="title">${w.title}</div>
+    <div class="lede">${w.lede||''}</div>
+    <div class="ph">${w.ph}</div>
+   </div>
+   <div class="actions">
+    <button class="btn primary sm" onclick="grab('${w.id}')">Grab to edit →</button>
+    ${w.auto?`<button class="btn sm" onclick="autoPost('${w.id}')">Auto-post now</button>`:`<button class="btn sm sub" onclick="requestReview('${w.id}')">Queue for review</button>`}
+   </div>
+  </div>`).join('');
+}
+const COLS=['New','Claimed','Drafting','Review','Published'];
+function renderBoard(){
+ const q=(document.getElementById('tq').value||'').toLowerCase();
+ const board=document.getElementById('board');
+ board.innerHTML=COLS.map(c=>{
+  const items=S.topics.filter(t=>t.col===c).filter(t=>!q||t.wire.title.toLowerCase().includes(q));
+  return `<div class="col"><div class="col-h"><span>${c}</span><span>${items.length}</span></div>
+   ${items.map(t=>`
+    <div class="tcard" onclick="openTopic('${t.id}')">
+     <div class="tags"><span class="pill league">${t.wire.league}</span><span class="pill ${srcPill(t.wire.src)}">${t.wire.src}</span><span class="pill" style="background:#fde8e3;color:#c0462f">${t.prio}</span></div>
+     <div class="tt">${t.wire.title}</div>
+     <div class="sub">${t.wire.lede?t.wire.lede.slice(0,90)+'…':''}</div>
+     <div class="who"><span>${t.who}</span><span style="font-size:10px">${t.wire.cat}</span></div>
+    </div>`).join('')}</div>`;
+ }).join('');
+}
+function grab(id){
+ const w=S.wires.find(x=>x.id===id); if(!w)return;
+ const t={id:'t'+w.id,wire:w,col:'Drafting',who:'You',prio:w.score>90?'P1':'P2'};
+ S.topics.push(t); save(); renderKPIs(); renderBoard(); renderWires(); openTopic(t.id);
+ toast('Topic grabbed — now in Drafting');
+}
+function autoPost(id){
+ const w=S.wires.find(x=>x.id===id); if(!w)return;
+ S.published.unshift({id:'p'+w.id,wire:w,col:'Published',who:'Auto-post bot',views:Math.round(4000+Math.random()*9000),clicks:Math.round(200+Math.random()*700),subs:Math.round(10+Math.random()*40),time:'just now'});
+ save(); renderAll(); toast('Published via auto-post rule (official final-score)');
+}
+function requestReview(id){
+ const w=S.wires.find(x=>x.id===id); if(!w)return;
+ S.topics.push({id:'t'+w.id,wire:w,col:'Review',who:'Editor 1',prio:'P1'});
+ save(); renderKPIs(); renderBoard(); toast('Queued for editor review');
+}
+let currentTopic=null;
+function openTopic(id){
+ currentTopic=id;
+ const t=S.topics.find(x=>x.id===id); if(!t)return;
+ const w=t.wire;
+ document.getElementById('edTitle').value=w.title;
+ document.getElementById('edLede').value=w.lede||'';
+ document.getElementById('edBody').value=`${w.title}\n\n${w.lede||''}\n\n[Editor's note: wire drafted by ${w.src}; research grounded with cited sources; angle tailored for Philippine audience — ${w.ph.toLowerCase()}]\n\nThe final story will include: opening recap, second-half turning point, decimal odds chip (OKBet), injury-context callout, and related-coverage links. Publish time: ${new Date().toLocaleTimeString()} PHT.`;
+ document.getElementById('edLeague').textContent=w.league;
+ document.getElementById('edSrc').textContent=w.src;
+ document.getElementById('edSrc').className='pill '+srcPill(w.src);
+ document.getElementById('edAutoFlag').checked=!!w.auto;
+ document.getElementById('edTag').value=w.league+' · '+(w.league==='NBA'?'PH audience favorite':'local interest');
+ document.getElementById('edAuthor').value=t.who;
+ document.getElementById('edStatus').value=t.col;
+ document.getElementById('edSaved').textContent='just now';
+ liveUpdate(w.title);
+ nav('editor');
+}
+function liveUpdate(v){
+ const slug=v.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,55)||'slug';
+ document.getElementById('edSlug').textContent=slug;
+ document.getElementById('seo1').textContent=(v.length<=70?'✔':'✖')+' Headline ('+v.length+'/70 chars)';
+}
+function saveDraft(){if(!currentTopic)return;const t=S.topics.find(x=>x.id===currentTopic);if(!t)return;t.wire.title=document.getElementById('edTitle').value;t.wire.lede=document.getElementById('edLede').value;t.col='Drafting';document.getElementById('edStatus').value='Drafting';document.getElementById('edSaved').textContent=new Date().toLocaleTimeString();save();renderAll();toast('Draft saved');}
+function moveCol(c){if(!currentTopic)return;const t=S.topics.find(x=>x.id===currentTopic);if(!t)return;t.col=c;document.getElementById('edStatus').value=c;save();renderKPIs();renderBoard();toast('Moved to '+c);}
+function publishNow(){
+ if(!currentTopic)return;
+ const t=S.topics.find(x=>x.id===currentTopic);if(!t)return;
+ t.col='Published';
+ t.wire.title=document.getElementById('edTitle').value;
+ t.wire.lede=document.getElementById('edLede').value;
+ S.published.unshift({id:'p'+Date.now(),wire:t.wire,col:'Published',who:t.who,views:1,clicks:0,subs:0,time:'just now'});
+ save(); renderAll(); nav('published');
+ toast('Published! Next.js build webhook simulated — live on site in ~30s');
+}
+function renderPub(){
+ const q=(document.getElementById('pq').value||'').toLowerCase();
+ const list=S.published.filter(p=>!q||p.wire.title.toLowerCase().includes(q));
+ const el=document.getElementById('pubList');
+ if(!list.length){el.innerHTML='<div class="empty">Nothing published yet.</div>';return}
+ el.innerHTML=list.map(p=>`
+  <div class="wire">
+   <div>
+    <div class="meta"><span class="pill league">${p.wire.league}</span><span>published ${p.time} by ${p.who}</span></div>
+    <div class="title">${p.wire.title}</div>
+    <div class="lede">${p.wire.lede||''}</div>
+    <div style="font-size:11px;color:var(--sub);margin-top:6px">~${p.views.toLocaleString()} pageviews · ${p.clicks} article clicks · ${p.subs} newsletter signups</div>
+   </div>
+   <div class="actions"><a class="btn sm" href="article-suns-magic.html" target="_blank" rel="noopener">view on site ↗</a></div>
+  </div>`).join('');
+}
+const PH_TRENDS=[['NBA Philippines',100],['PBA quarterfinals',91],['Kai Sotto',82],['Gilas Pilipinas',76],['UAAP final four',71],['Creamline PVL',64],['Premier League',52],['NFL Super Bowl',41]];
+const US_TRENDS=[['NFL',100],['NBA',93],['Soccer/MLS',62],['College FB',55],['MLB off-season',38]];
+function renderRadar(){
+ const mk=(arr,mx=100)=>arr.map(([l,v])=>`<div class="bar-row"><span class="lab">${l}</span><div class="bar"><div class="bar-fill" style="width:${v*100/mx}%"></div></div><span style="font-size:11px;color:var(--sub);width:26px;text-align:right">${v}</span></div>`).join('');
+ document.getElementById('radarPH').innerHTML=mk(PH_TRENDS);
+ document.getElementById('radarUS').innerHTML=mk(US_TRENDS);
+}
+function renderAnalytics(){
+ document.getElementById('topArticles').innerHTML=S.published.slice(0,5).map((p,i)=>`
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f2f2f0;font-size:12px">
+   <div style="display:flex;gap:10px;align-items:center;overflow:hidden"><span style="color:var(--sub);width:18px">#${i+1}</span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.wire.title}</span></div>
+   <span style="color:var(--sub);white-space:nowrap">${(p.views/1000).toFixed(1)}k views · ${p.clicks} clicks · <strong>${p.subs} subs</strong></span>
+  </div>`).join('');
+}
+function toggleR(el){el.classList.toggle('on');toast('Rule updated (demo)')}
+function nav(v){document.querySelectorAll('.nav-a').forEach(a=>a.classList.toggle('active',a.dataset.v===v));document.querySelectorAll('.view').forEach(s=>s.style.display=s.id==='v-'+v?'':'none');location.hash=v;window.scrollTo(0,0)}
+document.querySelectorAll('.nav-a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();nav(a.dataset.v)}));
+function applyHash(){const h=(location.hash||'#wires').slice(1);if(document.getElementById('v-'+h))nav(h)}
+function openSim(){document.getElementById('simModal').classList.add('open')}
+function closeSim(){document.getElementById('simModal').classList.remove('open')}
+function injectWire(){
+ const t=document.getElementById('mwTitle').value.trim();if(!t){alert('Headline required');return}
+ const lg=document.getElementById('mwLg').value,src=document.getElementById('mwSrc').value,sc=+document.getElementById('mwSc').value;
+ const w={id:'w'+(S.nextId++),league:lg,title:t,src,src,score:sc,auto:sc>=80&&lg!=='PH'&&src.includes('Grok'),cat:'news',time:'just now',lede:'Injected for client demo.',ph:'Demo wire — Philippine angle attached'};
+ S.wires.unshift(w); save(); closeSim(); renderAll(); toast('Wire injected — see top of feed');
+}
+function newTopic(){
+ const t=prompt('Topic headline for the bank:')
+ if(!t)return;
+ const w={id:'w'+(S.nextId++),league:'NBA',title:t,src:'Editor created',score:70,auto:false,cat:'feature',time:'just now',lede:'',ph:'Editor-created topic'};
+ S.topics.push({id:'t'+w.id,wire:w,col:'New',who:'You',prio:'P2'});
+ save(); renderKPIs(); renderBoard(); toast('Topic added to bank');
+}
+function simulateFifty(){
+ const teams=[['NBA','Knicks'],['NBA','Lakers'],['NBA','Warriors'],['PBA','SMB'],['PBA','TNT'],['PBA','Ginebra'],['NFL','Chiefs'],['NFL','Eagles'],['Soccer','Barça'],['PH','UP Fighting Maroons']];
+ const verbs=['dominates','edges','shocks','holds off','surges past','rallies over'];
+ for(let i=0;i<50;i++){
+  const [lg,t]=teams[i%teams.length]; const src=['Grok draft','Grok draft','Perplexity research','Trends signal'][i%4];
+  const sc=60+Math.round(Math.random()*38);
+  S.wires.push({id:'s'+(S.nextId++),league:lg,title:`${t} ${verbs[i%verbs.length]} rival in wire-update #${i+1}`,src,score:sc,auto:sc>=78&&lg!=='PH',cat:['final','feature','preview','injury','news'][i%5],time:Math.round(i/4+1)+'h ago',lede:'Wire intake '+new Date().toLocaleTimeString(),ph:'Auto-angled for PH audience'});
+ }
+ save(); renderAll(); toast('50 wires injected — scroll the feed to demo the volume');
+}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
+document.getElementById('simModal').addEventListener('click',e=>{if(e.target.id==='simModal')closeSim()});
+init();
+</script>
+</body>
+</html>
