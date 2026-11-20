@@ -276,8 +276,8 @@ Following user feedback ("It's not clean at all / I need it to be clean easy to 
 
 A client-ready **Editorial Studio** now lives at [/admin.html](https://3000-ipkdcxk1h3eu9ms189pu8-51ecb640.us5.manus.computer/admin.html) alongside the site demo:
 
-- **Incoming wires**: 50 realistic wires/day with Grok draft / Perplexity research / Trends badges, trend scores, Philippine angle notes, and **Grab to edit** + **Auto-post now** buttons
-- **Grab → edit → post flow**: clicking a wire pre-fills the editor with the draft, citations drawer (Perplexity sources), Grok angle suggestions, SEO checklist, and publish button (simulated Next.js webhook)
+- **Incoming wires**: 50 realistic wires/day with Auto-draft / Cited research / Trend signal badges, trend scores, Philippine angle notes, and **Grab to edit** + **Auto-post now** buttons
+- **Grab → edit → post flow**: clicking a wire pre-fills the editor with the draft, citations drawer (cited source URLs), suggested editorial angles, SEO checklist, and publish button (simulated Next.js webhook)
 - **Auto-post rules**: configurable toggles (official final scores ON, rumors OFF/review required, confidence ≥75 gate, throttle) showing the client they control autonomy
 - **Topic bank**: New → Claimed → Drafting → Review → Published columns
 - **Trends radar + analytics**: PH vs US search interest bars and simulated KPI metrics

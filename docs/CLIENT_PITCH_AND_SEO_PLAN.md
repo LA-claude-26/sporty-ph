@@ -7,7 +7,7 @@
 ## PART 1 — The Client Pitch (present this)
 
 ### One-line promise
-> **A turnkey, AI-powered sports media platform for Philippine & US audiences — with a clean modern site, a newsroom CMS that ingests ~50 Grok/Perplexity/Trends wires per day, real email capture, and monetization built in.**
+> **A turnkey sports media platform for Philippine & US audiences — with a clean modern site, a newsroom CMS that ingests ~50 auto-drafted wires per day from cited research and trend signals, real email capture, and monetization built in.**
 
 ### Problem they have today
 Most sports publishers fall into one of two traps: (a) slow, expensive human-only newsrooms that publish 5 stories a day, or (b) pure auto-generated spam that Google flags, citations are unverified, and nothing ranks. Meanwhile the **Philippines is the most basketball-obsessed, most sports-betting-active internet population in Asia** (OKBet is the #1 most-visited sportsbook website in the country), but lacks a clean, modern digital-native sports property that feels like a tech product.
@@ -18,7 +18,7 @@ Most sports publishers fall into one of two traps: (a) slow, expensive human-onl
 |---|---|
 | **1. Site** | Next.js 15 App Router frontend — 6+ pages today (homepage, betting preview articles, Covers-style AI predictions, PBA hub, odds board, newsletter funnel), decimal odds chips, sportsbook modules, mobile-first |
 | **2. CMS backend** | Managed Editorial Studio — incoming wire stream, topic bank with status board, distraction-free writing desk, citations drawer, SEO checklist, auto-post rules |
-| **3. AI intake engine** | **Google Trends** (which topics to prioritize) → **Perplexity Sonar** (cited research) → **Grok-4.7** (90-sec wire drafts with Philippine angle) — ~50/day capacity; editors grab, edit, and publish, with optional auto-post for low-risk final scores |
+| **3. Automated intake engine** | Trend signals (which topics to prioritize) → cited research (fact-grounded, with source links) → auto-drafted wire copy with a Philippine angle — ~50/day capacity; editors grab, edit, and publish, with optional auto-post for low-risk final scores |
 | **4. Monetization pipes** | Newsletter funnel (SPORTY DAILY), sportsbook affiliate widgets (OKBet/ArenaPlus — 20–30%+ rev-share or $50–150 CPA), premium ad slots, click-through analytics on every link |
 
 ### Market-verified opportunity
@@ -33,7 +33,7 @@ Most sports publishers fall into one of two traps: (a) slow, expensive human-onl
 |---|---|---|---|
 | Range | **$15,000–$30,000** | **$160–$300/mo** | **$80–$200/mo** |
 | Midpoint | **$20,000–$25,000** | ~$230/mo | ~$140/mo |
-| Includes | Full site + CMS + topic bank + 50 wires/day intake + email capture + analytics + 30-day warranty | Sanity + Vercel + Beehiiv + Grok + Perplexity + Trends (AI itself is <$40/mo at 50 wires/day) | Sanity + Vercel + Beehiiv only; editors write everything |
+| Includes | Full site + CMS + topic bank + 50 wires/day intake + email capture + analytics + 30-day warranty | Sanity + Vercel + Beehiiv + model APIs (the intake APIs themselves cost under $40/mo at 50 wires/day) | Sanity + Vercel + Beehiiv only; editors write everything |
 
 ### Delivery: **6–8 weeks**
 - **Weeks 1–2:** Brand finalization, domain, Sanity CMS schemas, Vercel production deployment
@@ -42,7 +42,7 @@ Most sports publishers fall into one of two traps: (a) slow, expensive human-onl
 - **Weeks 7–8:** Analytics dashboards, QA, handoff, 30-day post-launch support
 
 ### Why you win with us
-We don't sell templates. We deliver a **working, already-built platform** (the demo they can click through right now), a **real newsroom workflow** where editors claim, edit, and publish stories, and an **AI intake architecture that's grounded with cited sources** so Google and AI answer engines can cite you — plus a 90-day SEO and remarketing plan included.
+We don't sell templates. We deliver a **working, already-built platform** (the demo they can click through right now), a **real newsroom workflow** where editors claim, edit, and publish stories, and an **intake architecture grounded with cited sources** so Google and AI answer engines can cite you — plus a 90-day SEO and remarketing plan included.
 
 ---
 
