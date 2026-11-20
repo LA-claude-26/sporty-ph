@@ -284,10 +284,13 @@ A client-ready **Editorial Studio** now lives at [/admin.html](https://3000-ipkd
 
 Committed to `LA-claude-26/sporty-ph` (at `public/admin.html`), so once Vercel Deployment Protection is off the CMS is also reachable at `https://sporty-9isu6fssp-leadadvisors.vercel.app/admin.html`.
 
-## 22. Process Productized as a Reusable Skill
+## 22. Reusable Platform Process — Two Distinct Products
 
-The entire build process has been generalized into **`affiliate-review-media-platform`** — a validated Manus skill (Apache-2.0) that replicates this exact playbook for any niche, especially **Amazon review sites, product-review publishers, and brand-rating sites like brandratings.net**:
+The build process used here generalizes across niches, but **Sporty and brandratings.net are two separate platforms**:
 
-- **7 phases**: Niche intake & brand → Site build (demo→permanent) → AI-assisted CMS newsroom (intake→grab→edit→auto-post) → Monetization pipes → SEO plan (60/30/10 split, durable pillars vs wires) → Client pitch & pricing ($15K–$30K quotes) → Simple remarketing plan
-- **Bundled resources**: `references/amazon-compliance.md` (FTC disclosure + Amazon Associates rules), `references/article-template.md` (11-part review architecture), `templates/review-article.md` (fill-in starter)
-- **Validated & committed** to [LA-claude-26/skills-sync: team/la-content-engine/affiliate-review-media-platform](https://github.com/LA-claude-26/skills-sync/tree/main/team/la-content-engine/affiliate-review-media-platform) and packaged as `affiliate-review-media-platform.skill`
+| Platform | Domain | Monetization | Content |
+|---|---|---|---|
+| **Sporty** | Sports trending news (NBA/PBA/NFL/soccer) | Sportsbook affiliates (OKBet/ArenaPlus), newsletter, ads | Scores, game previews, AI picks, betting guides |
+| **brandratings.net** | Product reviews & brand trust | Amazon Associates, brand sponsorships, premium placements | Reviews, "best X" roundups, brand rating scorecards, buying guides |
+
+The **`affiliate-review-media-platform`** skill captures the brandratings.net side of this playbook — the 7-phase system specialized for **Amazon reviews, product reviews, and brand-rating sites** (with FTC disclosure rules, Amazon compliance, and review article templates). It is committed to [LA-claude-26/skills-sync](https://github.com/LA-claude-26/skills-sync/tree/main/team/la-content-engine/affiliate-review-media-platform) for use whenever you build brandratings.net-style properties.
