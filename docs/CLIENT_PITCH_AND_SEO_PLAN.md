@@ -1,6 +1,6 @@
 # Sporty — Client Pitch, SEO Editorial Plan & Remarketing System
 
-> Prepared for Anthony's client conversations. Market quote basis: **$250/hr (strategy/architecture)** + **$80/hr (engineering/team)**. All deliverables are built on the proven [LeadAdvisors content & SEO playbook](https://github.com/LA-claude-26/skills-sync/tree/main/team/leadadvisors-core) (ai-extractable content playbook, ahrefs topic cluster sprint, lead-site playbook, content-strategy).
+> Prepared for Anthony's client conversations. Market quote basis: **$250/hr (strategy/architecture)** + **$80/hr (engineering/team)**. All deliverables follow a battle-tested sports content & SEO playbook (AI-extractable content architecture, topic cluster sprints, content strategy frameworks).
 
 ---
 
@@ -82,7 +82,7 @@ We don't sell templates. We deliver a **working, already-built platform** (the d
 **Pillar 5 — Picks, Odds & Predictions (the conversion machine)**
 - *Pages:* Daily AI predictions slate (permanent URL updated daily with datePublished), weekly best-bets, biggest-underdog trackers, odds-movement explainers
 
-### Article architecture (per our [ai-extractable playbook](https://github.com/LA-claude-26/skills-sync/tree/main/team/leadadvisors-core))
+### Article architecture (AI-extractable content framework)
 Every substantive article (1,500–2,500 words) follows this formula:
 1. **Title** — promises the exact answer, includes the year
 2. **First 100 words** — direct answer + Key Takeaways box
@@ -220,4 +220,4 @@ Viber / Telegram community (Philippines-native) for breaking-wire alerts
 - Tracking: [Notion Master Task](https://app.notion.com/p/4118e554ee7781d8bbefcf6b72e18b6e) with 6 subtasks, all logged in PST
 
 ---
-*Created November 20, 2026. Built on LeadAdvisors' user-defined skills (ai-extractable-content-playbook, ahrefs-topic-cluster-sprint, lead-site-playbook, content-strategy) from https://github.com/LA-claude-26/skills-sync/tree/main/team/leadadvisors-core.*
+*Created November 20, 2026. Prepared for Sporty client conversations.*
