@@ -2,7 +2,7 @@
 
 **Deliverable for Anthony (Marketing & Operator)**
 **Date:** November 6, 2026 · **Author:** Manus AI
-**Companion demo:** [Interactive Theme Demo](/home/ubuntu/sporty-demo/index.html) · Live preview: `https://3000-ipkdcxk1h3eu9ms189pu8-51ecb640.us5.manus.computer`
+**Live site:** [https://sporty-ph.vercel.app](https://sporty-ph.vercel.app) · **Editorial Studio:** [https://sporty-ph.vercel.app/admin](https://sporty-ph.vercel.app/admin)
 
 ---
 
@@ -52,7 +52,7 @@ This structure takes a research-heavy editorial lift (odds checking, injury chec
 
 | Stage | Owner | Time | Output |
 |---|---|---|---|
-| Trend intake (Perplexity + RSS + X + odds APIs) | AI agents | 3 min | Idea Bank card with source links, odds, injuries |
+| Trend intake (trend-intake APIs + RSS + X + odds APIs) | AI agents | 3 min | Idea Bank card with source links, odds, injuries |
 | AI research draft | LLM | 2-3 min | 300-word structured draft (hook/market/injuries/stat edge/ATS/verdict) |
 | **Heavy editorial pass** | Human editor | 15-30 min | Voice, Philippine angles, Taglish flavour where fitting, tighter hooks |
 | SEO + voice optimization + fact-check | Editor | 5-10 min | Meta title, description, schema, link check, odds verification |
@@ -64,14 +64,14 @@ A **2-editor desk ships 15–25 stories per day**. The PGA Tour AWS case study p
 ### Site build timeline (6–10 weeks)
 
 - **Weeks 1-2 — Phase 1 MVP**: domain, Astro/Next.js shell, dark modern theme (from the provided demo design system), CMS setup, 30 starter stories, OKBet odds widget v1, newsletter capture, analytics.
-- **Weeks 3-4 — Phase 2 pipeline automation**: Perplexity/RSS idea-bank intake bot, LLM drafting agent, editorial kanban, auto-thumbnail generation, auto-newsletter digest builder.
+- **Weeks 3-4 — Phase 2 pipeline automation**: Automated RSS/trend idea-bank intake bot, LLM drafting agent, editorial kanban, auto-thumbnail generation, auto-newsletter digest builder.
 - **Weeks 5-6 — Phase 3 growth engine**: article-level recommendation engine, live odds ticker, injury wire, community picks polls, Viber broadcast, affiliate tracking.
 - **Weeks 7-10 — Scale**: PVL & collegiate coverage depth, paid acquisition tests (FB ads, ₱10–₱20 per subscriber in PH), brand partnerships.
 
 ## 6. Content Pipeline Architecture
 
 ```
-[Perplexity API] ──┐
+[Trend APIs]    ──┐
 [RSS feeds]       ──┼─► [IDEA BANK] ──► [AI RESEARCH DRAFT] ──► [HEAVY EDITORIAL]
 [X / FB trends]   ──┤    ranked by      structured 300-word       human voice,
 [Odds movement]   ──┘    buzz + gaps     draft with sources       PH angle, bets
@@ -84,7 +84,7 @@ A **2-editor desk ships 15–25 stories per day**. The PGA Tour AWS case study p
 ```
 
 ### The Idea Bank
-Trending signals are ingested continuously from Perplexity (best for "what is trending right now and why"), RSS of ~40 sources (NBA.com, Spin.ph, Tiebreaker Times, Action Network, Covers, Philippine news sites), X lists, FB fan groups, and sportsbook line movements. Each idea card arrives pre-tagged with category (NBA/PBA/GILAS/PVL/UAAP), trend score, recommended angle, source links, and — for betting pieces — current odds and injury status.
+Trending signals are ingested continuously from trend-intake APIs (capturing what is trending right now and why), RSS of ~40 sources (NBA.com, Spin.ph, Tiebreaker Times, Action Network, Covers, Philippine news sites), X lists, FB fan groups, and sportsbook line movements. Each idea card arrives pre-tagged with category (NBA/PBA/GILAS/PVL/UAAP), trend score, recommended angle, source links, and — for betting pieces — current odds and injury status.
 
 ### Heavy Editorial
 The AI draft is deliberately conservative and generic; the human editor's job is **voice**:
@@ -195,7 +195,7 @@ The demo includes: working brand name switcher, league pill filtering, scores ti
 | Phase | Duration | Milestones | Success KPI |
 |---|---|---|---|
 | **P1 — MVP** | Weeks 1-2 | Brand chosen, domain + Astro/Next.js site live, 30 short stories, OKBet widget v1, newsletter form, analytics | Site live; first 100 subscribers |
-| **P2 — Engine** | Weeks 3-4 | Perplexity intake bot, LLM drafting agent, editorial kanban, 15+ stories/day, Viber channel | 50K sessions/mo; 1,000 subscribers |
+| **P2 — Engine** | Weeks 3-4 | Automated intake bot, LLM drafting agent, editorial kanban, 15+ stories/day, Viber channel | 50K sessions/mo; 1,000 subscribers |
 | **P3 — Growth** | Weeks 5-6 | Recommendation engine, live ticker, injury wire, community polls, affiliate links wired, Discover optimization | 200K sessions/mo; 3.0+ pages/session |
 | **Scale** | Weeks 7-10 | PVL/collegiate expansion, paid sub acquisition, sponsorships, 25K subscribers | ₱200K+ monthly revenue run-rate |
 
@@ -263,26 +263,18 @@ Following user feedback ("It's not clean at all / I need it to be clean easy to 
 - **Restrained ad placements**: thin leaderboard and sidebar rectangles, quiet and professional
 - **Verified build**: 12 static routes, ~112 kB first load JS, all endpoints return HTTP 200
 - **Fresh bundles**: [sporty.zip](/home/ubuntu/sporty.zip) (4.5 MB) and [sporty.bundle](/home/ubuntu/sporty.bundle) (2.2 MB)
-
 ---
-
-*This document was generated by Manus AI on November 6, 2026. Companion interactive theme demo: [index.html](/home/ubuntu/sporty-demo/index.html) and Next.js project: [sporty.zip](/home/ubuntu/sporty.zip). Corresponding tracking tasks created in the Master Tasks DB.*
-
+*This document was generated by Manus AI on November 6, 2026 and last updated November 2026.*
 ## 20. Client Price Quote Guidance (November 2026)
-
-**Build (market quote):** $15,000–$30,000 fixed-price at Anthony’s $250/hr (30–45h) + team’s $80/hr (60–100h) rates ($12,300–$19,250 labor basis). **Recurring without AI:** ~$80–$200/mo (Sanity Growth + Vercel Pro + Beehiiv). **Recurring with AI (Grok + Perplexity + Trends, ~50 wire updates/day):** ~$160–$300/mo — the AI itself is <$40/mo at this volume. **Architecture:** Perplexity Sonar research + Grok-4.7 drafts + Trends prioritization feed a Sanity-managed topic bank where editors claim, edit, and publish stories; webhooks trigger Next.js rebuilds; Beehiiv captures real subscribers; event-level click-through analytics on articles and affiliate links. **Demo backend options on Manus:** (A) Local demo API on this VM with mock feeds and editor claim/edit UI — 1 hour, free demo; (B) Real managed Sanity CMS project — 1–2 days, production-grade; (C) Hybrid: A today for the client demo, then B for the build.
-
+**Build (market quote):** $15,000–$30,000 fixed-price at Anthony’s $250/hr (30–45h) + team’s $80/hr (60–100h) rates ($12,300–$19,250 labor basis). **Recurring without AI:** ~$80–$200/mo (Sanity Growth + Vercel Pro + Beehiiv). **Recurring with AI (~50 wire updates/day):** ~$160–$300/mo — the AI layer itself is <$40/mo at this volume. **Architecture:** cited-research intake + auto-drafts + trend prioritization feed a Sanity-managed topic bank where editors claim, edit, and publish stories; webhooks trigger Next.js rebuilds; Beehiiv captures real subscribers; event-level click-through analytics on articles and affiliate links. **Demo backend options on Manus:** (A) Local demo API on this VM with mock feeds and editor claim/edit UI — 1 hour, free demo; (B) Real managed Sanity CMS project — 1–2 days, production-grade; (C) Hybrid: A today for the client demo, then B for the build.
 ## 21. Editorial Studio — Backend CMS Demo (Shipped)
-
-A client-ready **Editorial Studio** now lives at [/admin.html](https://3000-ipkdcxk1h3eu9ms189pu8-51ecb640.us5.manus.computer/admin.html) alongside the site demo:
-
+A client-ready **Editorial Studio** now lives at [/admin](https://sporty-ph.vercel.app/admin) alongside the site demo:
 - **Incoming wires**: 50 realistic wires/day with Auto-draft / Cited research / Trend signal badges, trend scores, Philippine angle notes, and **Grab to edit** + **Auto-post now** buttons
 - **Grab → edit → post flow**: clicking a wire pre-fills the editor with the draft, citations drawer (cited source URLs), suggested editorial angles, SEO checklist, and publish button (simulated Next.js webhook)
 - **Auto-post rules**: configurable toggles (official final scores ON, rumors OFF/review required, confidence ≥75 gate, throttle) showing the client they control autonomy
 - **Topic bank**: New → Claimed → Drafting → Review → Published columns
 - **Trends radar + analytics**: PH vs US search interest bars and simulated KPI metrics
-
-Committed to the `sporty-ph` repository at `public/admin.html`, so once Vercel Deployment Protection is off the Editorial Studio is reachable at `/admin.html` on the production domain.
+Committed to the `sporty-ph` repository at `public/admin.html`, so the Editorial Studio is reachable at `/admin` on the production domain (Vercel routes HTML files cleanly).
 
 ## 22. Reusable Platform Process — Two Distinct Products
 

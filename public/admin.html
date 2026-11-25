@@ -45,7 +45,7 @@ button.btn.sub{background:transparent}button.btn.sm{font-size:11px;padding:4px 9
 .wire .score{font-size:11px;font-weight:600;color:#555}
 .wire .actions{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
 .pill{padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600}
-.pill.src-grok{background:#111;color:#fff}.pill.src-perp{background:#e8f4fc;color:#1d6fa5}.pill.src-trends{background:#fde8e3;color:#c0462f}
+.pill.src-draft{background:#111;color:#fff}.pill.src-cited{background:#e8f4fc;color:#1d6fa5}.pill.src-trend{background:#fde8e3;color:#c0462f}
 .pill.auto{background:#eaf8ef;color:#0a8a64}.pill.manual{background:#fdf3e0;color:#b46900}
 .pill.cat{background:#f2f2f0;color:#555}
 .pill.league{background:#eef1f4;color:#445}
@@ -124,7 +124,7 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
 <!-- WIRES VIEW -->
 <section id="v-wires" class="view">
  <h1 class="view-title">Incoming wires</h1>
- <p class="view-sub">Real-time-simulated feed from Grok-4.7 drafts, Perplexity Sonar research with citations, and Google Trends signals. Grab to edit, or let auto-post handle eligible wires.</p>
+ <p class="view-sub">Real-time-simulated feed from auto-drafts, cited research, and trend signals. Grab to edit, or let auto-post handle eligible wires.</p>
  <div class="kpi-row">
   <div class="kpi"><div class="num" id="kWires">50</div><div class="lab">wires today</div></div>
   <div class="kpi"><div class="num" id="kAuto">23</div><div class="lab">auto-post eligible</div></div>
@@ -135,7 +135,7 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
  <div class="toolbar">
   <input id="q" placeholder="Search wires…" oninput="renderWires()">
   <select id="fLeague" onchange="renderWires()"><option value="">All leagues</option><option>NBA</option><option>PBA</option><option>NFL</option><option>Soccer</option><option value="PH">PH (Kai/Gilas/UAAP/PVL)</option></select>
-  <select id="fSrc" onchange="renderWires()"><option value="">All sources</option><option value="Grok">Grok drafts</option><option value="Perplexity">Perplexity research</option><option value="Trends">Trends signals</option></select>
+  <select id="fSrc" onchange="renderWires()"><option value="">All sources</option><option value="Auto-draft">Auto-drafts</option><option value="Cited research">Cited research</option><option value="Trend signal">Trend signals</option></select>
   <select id="fAuto" onchange="renderWires()"><option value="">All eligibility</option><option value="1">Auto-post eligible</option><option value="0">Editor review required</option></select>
   <button class="btn primary" onclick="openSim()">+ inject wire</button>
  </div>
@@ -156,11 +156,11 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
 <!-- EDITOR VIEW -->
 <section id="v-editor" class="view" style="display:none">
  <h1 class="view-title">Drafting desk</h1>
- <p class="view-sub">Edit the Grok wire draft against Perplexity citations and Trends context, then publish or mark auto-post.</p>
+ <p class="view-sub">Edit the wire draft against cited sources and trend context, then publish or mark auto-post.</p>
  <div class="editor-layout">
   <div class="panel">
    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-    <div><span class="pill league" id="edLeague">NBA</span> <span class="pill" id="edSrc" style="margin-left:4px">Grok draft</span></div>
+    <div><span class="pill league" id="edLeague">NBA</span> <span class="pill" id="edSrc" style="margin-left:4px">Auto-draft</span></div>
     <div style="font-size:11px;color:var(--sub)">Slug preview: /article/<span id="edSlug">suns-vs-magic-nba</span> · last saved <span id="edSaved">just now</span></div>
    </div>
    <div class="field"><label>Headline</label><input id="edTitle" placeholder="Punchy headline with team names & hook" oninput="liveUpdate(this.value)"></div>
@@ -179,12 +179,12 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
   </div>
   <div class="sidepanel">
    <div class="box">
-    <h3>Perplexity citations & grounding</h3>
+    <h3>Cited sources & grounding</h3>
     <div id="edCites"><a class="src-link" href="#" target="_blank">nba.com/news — game recap</a><a class="src-link" href="#" target="_blank">orlandomagic.com — injury report</a><a class="src-link" href="#" target="_blank">sports.yahoo.com — box score</a></div>
     <div style="margin-top:8px;font-size:11px;color:var(--sub)">All 3 citations verified · no ungrounded claims</div>
    </div>
    <div class="box">
-    <h3>Grok angle suggestion</h3>
+    <h3>Editorial angle suggestion</h3>
     <div id="edAngle" style="font-size:12px;line-height:1.5">Lead with the Magic's 9th loss in 10 and injury list — that's the bettor angle. Close on decimal odds for PH audience.</div>
    </div>
    <div class="box">
@@ -221,7 +221,7 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
   <div class="rule-row"><div><strong>Milestone / record wires</strong><div class="view-sub" style="margin:2px 0 0">e.g. Kane 400 goals, Mahomes passing record — high verification, low risk</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
   <div class="rule-row"><div><strong>Rumor / trade-speculation wires</strong><div class="view-sub" style="margin:2px 0 0">Always hold for editor review; rumor tags require sourcing check</div></div><div class="switch" onclick="toggleR(this)"></div></div>
   <div class="rule-row"><div><strong>Injury wires with betting impact</strong><div class="view-sub" style="margin:2px 0 0">Hold: decimal odds implications need human confirmation</div></div><div class="switch" onclick="toggleR(this)"></div></div>
-  <div class="rule-row"><div><strong>Confidence threshold ≥ 75</strong><div class="view-sub" style="margin:2px 0 0">Grok/Perplexity composite score gate before any auto-publish</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
+  <div class="rule-row"><div><strong>Confidence threshold ≥ 75</strong><div class="view-sub" style="margin:2px 0 0">Composite intake score gate before any auto-publish decision</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
   <div class="rule-row"><div><strong>Throttle: max 20 auto-posts per day</strong><div class="view-sub" style="margin:2px 0 0">Caps volume during playoff spikes; excess wires queue for editors</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
   <div class="rule-row"><div><strong>Auto-embed decimal odds chips</strong><div class="view-sub" style="margin:2px 0 0">OKBet odds pull for NBA & PBA wires</div></div><div class="switch on" onclick="toggleR(this)"></div></div>
  </div>
@@ -241,15 +241,15 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
    <div id="radarUS"></div>
   </div>
   <div class="radar-card">
-   <strong style="font-size:13px">Perplexity research coverage</strong>
+   <strong style="font-size:13px">Cited research coverage</strong>
    <p style="font-size:12px;color:var(--sub);margin:8px 0 12px;line-height:1.5">Every incoming wire is grounded with 2–4 cited sources (league releases, team press, official box scores). Editor citations drawer shows the exact URLs before publishing.</p>
    <div class="check">✔ 42 wires grounded this morning</div>
    <div class="check">✔ 0 ungrounded claims in topic bank</div>
    <div class="check">✔ Avg citations per wire: 3.2</div>
   </div>
   <div class="radar-card">
-   <strong style="font-size:13px">Grok angle engine</strong>
-   <p style="font-size:12px;color:var(--sub);margin:8px 0 12px;line-height:1.5">Grok-4.7 drafts the 90-second wire copy and suggests the editorial angle (bettor angle, PH audience hook, dynasty narrative). The editor keeps the draft, rewrites it, or lets auto-post run it.</p>
+   <strong style="font-size:13px">Editorial angle engine</strong>
+   <p style="font-size:12px;color:var(--sub);margin:8px 0 12px;line-height:1.5">Drafting engine produces the 90-second wire copy and suggests the editorial angle (bettor angle, PH audience hook, narrative arc). The editor keeps the draft, rewrites it, or lets auto-post run it.</p>
    <div class="check">✔ ~50 drafts/day target</div>
    <div class="check">✔ 15–45 min wire→publish SLA</div>
    <div class="check">✔ Philippine angle attached to every wire</div>
@@ -274,7 +274,7 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
  </div>
 </section>
 
-<footer class="note"><span>Sporty Editorial Studio — client demo build</span><span>Grok-4.7 drafts · Perplexity Sonar research · Trends signals · editors pick & publish</span></footer>
+<footer class="note"><span>Sporty Editorial Studio — client demo build</span><span>Auto-drafts · Cited research · Trend signals · editors pick & publish</span></footer>
 </main>
 </div>
 
@@ -283,7 +283,7 @@ footer.note{font-size:11px;color:var(--sub);margin-top:30px;padding-top:14px;bor
  <h3>Inject a custom wire (demo)</h3>
  <div class="field" style="margin-top:12px"><label>Headline</label><input id="mwTitle" placeholder="e.g. Jokić 31-13-9 in Nuggets win over Thunder…"></div>
  <div class="field"><label>League</label><select id="mwLg"><option>NBA</option><option>PBA</option><option>NFL</option><option>Soccer</option><option value="PH">PH</option></select></div>
- <div class="field"><label>Source</label><select id="mwSrc"><option>Grok draft</option><option>Perplexity research</option><option>Trends signal</option></select></div>
+ <div class="field"><label>Source</label><select id="mwSrc"><option>Auto-draft</option><option>Cited research</option><option>Trend signal</option></select></div>
  <div class="field"><label>Confidence / trend score (0–100)</label><input type="number" id="mwSc" value="84" min="0" max="100"></div>
  <div style="display:flex;gap:8px;justify-content:flex-end">
   <button class="btn" onclick="closeSim()">Cancel</button>
@@ -322,7 +322,7 @@ function renderKPIs(){
  document.getElementById('cntPub').textContent=S.published.length;
  document.getElementById('liveChip').textContent=S.wires.length+' wires today · live-simulated';
 }
-function srcPill(src){if(/Grok/.test(src))return 'src-grok';if(/Perplexity/.test(src))return 'src-perp';return 'src-trends';}
+function srcPill(src){if(/Auto-draft/i.test(src))return 'src-draft';if(/Cited/i.test(src))return 'src-cited';return 'src-trend';}
 function renderWires(){
  const q=(document.getElementById('q').value||'').toLowerCase();
  const lg=document.getElementById('fLeague').value;
@@ -458,7 +458,7 @@ function closeSim(){document.getElementById('simModal').classList.remove('open')
 function injectWire(){
  const t=document.getElementById('mwTitle').value.trim();if(!t){alert('Headline required');return}
  const lg=document.getElementById('mwLg').value,src=document.getElementById('mwSrc').value,sc=+document.getElementById('mwSc').value;
- const w={id:'w'+(S.nextId++),league:lg,title:t,src,src,score:sc,auto:sc>=80&&lg!=='PH'&&src.includes('Grok'),cat:'news',time:'just now',lede:'Injected for client demo.',ph:'Demo wire — Philippine angle attached'};
+ const w={id:'w'+(S.nextId++),league:lg,title:t,src,src,score:sc,auto:sc>=80&&lg!=='PH'&&src.includes('Auto-draft'),cat:'news',time:'just now',lede:'Injected for client demo.',ph:'Demo wire — Philippine angle attached'};
  S.wires.unshift(w); save(); closeSim(); renderAll(); toast('Wire injected — see top of feed');
 }
 function newTopic(){
@@ -472,7 +472,7 @@ function simulateFifty(){
  const teams=[['NBA','Knicks'],['NBA','Lakers'],['NBA','Warriors'],['PBA','SMB'],['PBA','TNT'],['PBA','Ginebra'],['NFL','Chiefs'],['NFL','Eagles'],['Soccer','Barça'],['PH','UP Fighting Maroons']];
  const verbs=['dominates','edges','shocks','holds off','surges past','rallies over'];
  for(let i=0;i<50;i++){
-  const [lg,t]=teams[i%teams.length]; const src=['Grok draft','Grok draft','Perplexity research','Trends signal'][i%4];
+  const [lg,t]=teams[i%teams.length]; const src=['Auto-draft','Auto-draft','Cited research','Trend signal'][i%4];
   const sc=60+Math.round(Math.random()*38);
   S.wires.push({id:'s'+(S.nextId++),league:lg,title:`${t} ${verbs[i%verbs.length]} rival in wire-update #${i+1}`,src,score:sc,auto:sc>=78&&lg!=='PH',cat:['final','feature','preview','injury','news'][i%5],time:Math.round(i/4+1)+'h ago',lede:'Wire intake '+new Date().toLocaleTimeString(),ph:'Auto-angled for PH audience'});
  }

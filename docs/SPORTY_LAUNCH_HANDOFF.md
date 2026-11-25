@@ -10,13 +10,13 @@
 | Asset | What it is | Where it lives |
 |---|---|---|
 | Public site | Next.js 15 App Router, statically exported, 6 routes | `sporty-ph` repository, deployed on Vercel |
-| Editorial Studio | The newsroom CMS demo — intake queue, topic bank, writing desk, auto-post rules | `/admin.html` on the same deployment |
+| Editorial Studio | The newsroom CMS demo — intake queue, topic bank, writing desk, auto-post rules | `/admin` on the same deployment |
 | Strategy blueprint | Positioning, design system, content pipeline, SEO architecture | `docs/SPORTY_STRATEGY.md` |
 | Client pitch & SEO plan | Pricing, editorial plan, remarketing system | `docs/CLIENT_PITCH_AND_SEO_PLAN.md` |
 | Content automation SOP | The five-stage pipeline, autonomy ladder, QA gates | `sports-content-automation` skill |
 | This document | The go-live runbook | `docs/SPORTY_LAUNCH_HANDOFF.md` |
 
-**Routes on the live site:** `/` (home) · `/odds` (odds board) · `/newsletter` (SPORTY DAILY signup) · `/article/ai-predictions` · `/article/suns-vs-magic` · `/league/pba` · `/admin.html` (Editorial Studio).
+**Routes on the live site:** `/` (home) · `/odds` (odds board) · `/newsletter` (SPORTY DAILY signup) · `/article/ai-predictions` · `/article/suns-vs-magic` · `/league/pba` · `/admin` (Editorial Studio).
 
 ---
 
@@ -51,7 +51,7 @@ Fill this in before hand-off and store it in the team password manager. The laun
 - [ ] `sitemap.xml` live and submitting
 - [ ] `sitemap-news.xml` live for the last 48 hours of stories
 - [ ] `llms.txt` at the domain root
-- [ ] Every route returns 200 — test all seven including `/admin.html`
+- [ ] Every route returns 200 — test all seven including `/admin`
 - [ ] Open Graph and Twitter card images render on all routes
 - [ ] Canonical tags correct on every page
 - [ ] Lighthouse: LCP under 2.5s on mobile, CLS under 0.1

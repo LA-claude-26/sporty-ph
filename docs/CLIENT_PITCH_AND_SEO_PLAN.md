@@ -212,12 +212,11 @@ Viber / Telegram community (Philippines-native) for breaking-wire alerts
 
 ## Deliverables in this package
 
-- Strategy blueprint: [SPORTY_STRATEGY.md](/home/ubuntu/sporty-demo/SPORTY_STRATEGY.md) (full 21-section blueprint with quote guidance and CMS demo docs)
-- Interactive theme demo: [index.html](/home/ubuntu/sporty-demo/index.html)
-- Next.js 15 production app: [sporty.zip](/home/ubuntu/sporty.zip) · Git repo: [sporty.bundle](/home/ubuntu/sporty.bundle)
-- Editorial Studio CMS demo: [admin.html](https://3000-ipkdcxk1h3eu9ms189pu8-51ecb640.us5.manus.computer/admin.html) (grab→edit→post + auto-post rules + 50 wires)
-- Public site demo: [https://3000-ipkdcxk1h3eu9ms189pu8-51ecb640.us5.manus.computer/](https://3000-ipkdcxk1h3eu9ms189pu8-51ecb640.us5.manus.computer/)
-- Tracking: [Notion Master Task](https://app.notion.com/p/4118e554ee7781d8bbefcf6b72e18b6e) with 6 subtasks, all logged in PST
-
+- Strategy blueprint: `docs/SPORTY_STRATEGY.md` (full blueprint with quote guidance and CMS demo docs)
+- Pitch deck outline: `docs/pitch-deck.md` (page order, per-page talking points, objection handling)
+- Launch hand-off runbook: `docs/SPORTY_LAUNCH_HANDOFF.md` (pre-launch checklist, go-live runbook, KPIs)
+- Next.js 15 production app: live at [https://sporty-ph.vercel.app](https://sporty-ph.vercel.app)
+- Editorial Studio CMS demo: live at [https://sporty-ph.vercel.app/admin](https://sporty-ph.vercel.app/admin) (grab→edit→post + auto-post rules + 50 wires)
+- Content automation skill: `sports-content-automation` (reusable intake, editorial standards, wire validator)
 ---
 *Created November 20, 2026. Prepared for Sporty client conversations.*
