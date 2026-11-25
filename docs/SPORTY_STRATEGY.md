@@ -282,7 +282,7 @@ A client-ready **Editorial Studio** now lives at [/admin.html](https://3000-ipkd
 - **Topic bank**: New → Claimed → Drafting → Review → Published columns
 - **Trends radar + analytics**: PH vs US search interest bars and simulated KPI metrics
 
-Committed to the `sporty-ph` repository (at `public/admin.html`), so once Vercel Deployment Protection is off the CMS is also reachable at `https://sporty-9isu6fssp-leadadvisors.vercel.app/admin.html`.
+Committed to the `sporty-ph` repository at `public/admin.html`, so once Vercel Deployment Protection is off the Editorial Studio is reachable at `/admin.html` on the production domain.
 
 ## 22. Reusable Platform Process — Two Distinct Products
 

@@ -5,9 +5,20 @@ Philippines-focused sports trending news website — NBA, PBA, Gilas, UAAP, NCAA
 ## Tech stack
 
 - **Next.js 15 (App Router)** + React 19 + TypeScript
-- **Tailwind CSS** + mint-green design system (`#00E8A7`, `--la-mint: #85d4ae`)
+- **Tailwind CSS** + mint-green design system (`#00E8A7`, `--mint-soft: #85d4ae`)
 - **Typography:** Poppins (display) + Inter (body) + JetBrains Mono (data)
 - **Deployment:** Vercel
+
+## Documentation
+
+| Document | What it covers |
+|---|---|
+| [`docs/SPORTY_STRATEGY.md`](docs/SPORTY_STRATEGY.md) | Positioning, design system, content pipeline, SEO architecture, platform economics |
+| [`docs/CLIENT_PITCH_AND_SEO_PLAN.md`](docs/CLIENT_PITCH_AND_SEO_PLAN.md) | Client pitch, pricing, SEO editorial plan, remarketing system |
+| [`docs/SPORTY_LAUNCH_HANDOFF.md`](docs/SPORTY_LAUNCH_HANDOFF.md) | Go-live runbook: access inventory, pre-launch checks, DNS, analytics, launch day, first 30 days |
+| [`docs/pitch-deck.md`](docs/pitch-deck.md) | Pitch deck outline and talking points |
+
+The operating SOP for the newsroom lives in the **`sports-content-automation`** skill: five-stage pipeline, autonomy ladder, QA gates, and wire schema.
 
 ## Getting started
 
@@ -20,16 +31,15 @@ npm run start    # production server
 
 ## Deploy to Vercel
 
-The repo `github.com/LA-claude-26/sporty-ph` is Git-connected to the Vercel project
-**`sporty-ph`** on the **leadadvisors** team. Every push to a branch builds a preview;
-every merge to `main` builds production.
+The `sporty-ph` repository is Git-connected to the Vercel project **`sporty-ph`**.
+Every push to a branch builds a preview; every merge to `main` builds production.
 
 ### Which URL to share
 
 | URL shape | What it is | Who can open it |
 |---|---|---|
-| `sporty-ph-xxxxxxxx-leadadvisors.vercel.app` | Hashed per-deployment URL | Vercel team members only (login wall, by default) |
-| `sporty-ph-git-<branch>-leadadvisors.vercel.app` | Branch preview | Vercel team members only (login wall, by default) |
+| `sporty-ph-xxxxxxxx.vercel.app` | Hashed per-deployment URL | Vercel team members only (login wall, by default) |
+| `sporty-ph-git-<branch>.vercel.app` | Branch preview | Vercel team members only (login wall, by default) |
 | `sporty-ph.vercel.app` | Production domain, updated on every merge to `main` | **Anyone** |
 
 So: merge to `main` and share the production domain. No settings change is needed
